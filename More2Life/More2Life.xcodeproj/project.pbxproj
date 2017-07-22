@@ -192,7 +192,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Domo;
+				ORGANIZATIONNAME = More2Life;
 				TargetAttributes = {
 					04021D2D1F231B6F00B92BD9 = {
 						CreatedOnToolsVersion = 8.3.2;
