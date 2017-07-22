@@ -3,7 +3,7 @@
 //  More2Life
 //
 //  Created by Porter Hoskins on 7/21/17.
-//  Copyright © 2017 Domo. All rights reserved.
+//  Copyright © 2017 More2Life. All rights reserved.
 //
 
 import UIKit
