@@ -7,15 +7,18 @@
 //
 
 import UIKit
-import Services
+import Shared
+import CoreData
 
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        FeedItemService.import() { json in
-            print(json)
+        FeedItem.import(in: Shared.viewContext) { _ in
+            let fetchRequest: NSFetchRequest<FeedItem> = FeedItem.fetchRequest()
+            
+            print(try! Shared.viewContext.fetch(fetchRequest))
         }
     }
 

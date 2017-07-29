@@ -11,7 +11,7 @@ import Alamofire
 
 public final class FeedItemService {
     
-    public static func `import`(completion: @escaping (_ json: [[String : Any]]?)->() = { _ in }) {
+    public static func `import`(completion: @escaping (_ json: [[String : Any]]?)->()) {
         Alamofire.request("https://m2l-server.herokuapp.com/api/feedItems").responseJSON { response in
             completion(response.result.value as? [[String : Any]])
         }
