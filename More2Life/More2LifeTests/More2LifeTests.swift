@@ -2,8 +2,8 @@
 //  More2LifeTests.swift
 //  More2LifeTests
 //
-//  Created by Porter Hoskins on 7/21/17.
-//  Copyright © 2017 Domo. All rights reserved.
+//  Created by Porter Hoskins on 7/29/17.
+//  Copyright © 2017 More2Life. All rights reserved.
 //
 
 import XCTest
