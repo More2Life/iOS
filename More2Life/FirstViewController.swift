@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Services
 
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        FeedItemService.import() { json in
+            print(json)
+        }
     }
 
     override func didReceiveMemoryWarning() {

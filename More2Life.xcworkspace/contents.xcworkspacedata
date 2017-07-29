@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:More2Life.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Alamofire-4.4.0/Alamofire.xcodeproj">
+   </FileRef>
+</Workspace>
