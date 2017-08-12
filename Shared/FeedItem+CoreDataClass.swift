@@ -13,6 +13,9 @@ import Services
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
 public enum FeedItemType: String {
+    case video = "Video"
+    case event = "Event"
+    case listing = "Listing"
     case unknown
 }
 
@@ -74,18 +77,38 @@ public class FeedItem: NSManagedObject {
         guard let identifier = json["_id"] as? String,
             let title = json["title"] as? String,
             let index = json["index"] as? Int64,
-            let description = json["description"] as? String else { return nil }
+            let description = json["description"] as? String,
+            let type = FeedItemType(rawValue: json["type"] as? String ?? "") else { return nil }
         
         var feedItem = FeedItem.fetch(withID: identifier, in: context)
         if feedItem == nil {
-            feedItem = FeedItem(context: context)
+            switch type {
+            case .video:
+                feedItem = VideoFeedItem(context: context)
+            case .event:
+                feedItem = EventFeedItem(context: context)
+            case .listing:
+                feedItem = ListingFeedItem(context: context)
+            default: break
+            }
         }
         
         feedItem?.identifier = identifier
-        feedItem?.type = FeedItemType(rawValue: json["type"] as? String ?? "") ?? .unknown
+        feedItem?.type = type
         feedItem?.title = title
         feedItem?.index = index
         feedItem?.itemDescription = description
+        feedItem?.isActive = json["isActive"] as? Bool ?? false
+        
+        switch type {
+        case .video:
+            VideoFeedItem.hydrate(feedItem, with: json)
+        case .event:
+            EventFeedItem.hydrate(feedItem, with: json)
+        case .listing:
+            ListingFeedItem.hydrate(feedItem, with: json, in: context)
+        default: break
+        }
         
         return feedItem
     }
@@ -107,7 +130,7 @@ public class FeedItem: NSManagedObject {
             
             return result.first
         } catch {
-            print("Error finding Feed item \(error)")
+            print("Error finding Feed item \(identifier) \(error)")
             return nil
         }
     }

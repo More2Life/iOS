@@ -1,9 +1,9 @@
 //
 //  FeedItem+CoreDataProperties.swift
-//  
+//  More2Life
 //
-//  Created by Porter Hoskins on 7/29/17.
-//
+//  Created by Porter Hoskins on 8/12/17.
+//  Copyright © 2017 More2Life. All rights reserved.
 //
 
 import Foundation
@@ -16,9 +16,10 @@ extension FeedItem {
         return NSFetchRequest<FeedItem>(entityName: "FeedItem")
     }
 
-    @NSManaged public var identifier: String
-    @NSManaged public var itemDescription: String
+    @NSManaged public var identifier: String?
     @NSManaged public var index: Int64
-    @NSManaged public var title: String
+    @NSManaged public var itemDescription: String?
+    @NSManaged public var title: String?
+    @NSManaged public var isActive: Bool
 
 }

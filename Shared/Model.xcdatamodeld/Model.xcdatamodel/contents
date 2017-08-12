@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="FeedItem" representedClassName=".FeedItem" syncable="YES">
+    <entity name="EventFeedItem" representedClassName="EventFeedItem" parentEntity="FeedItem" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventURL" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="FeedItem" representedClassName=".FeedItem" isAbstract="YES" syncable="YES">
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="index" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="itemDescription" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ListingFeedItem" representedClassName="ListingFeedItem" parentEntity="FeedItem" syncable="YES">
+        <attribute name="previewImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="feedItem" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="feedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListingFeedItem" inverseName="product" inverseEntity="ListingFeedItem" syncable="YES"/>
+    </entity>
+    <entity name="VideoFeedItem" representedClassName="VideoFeedItem" parentEntity="FeedItem" syncable="YES">
+        <attribute name="previewImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="views" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="FeedItem" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="FeedItem" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="VideoFeedItem" positionX="-63" positionY="18" width="128" height="105"/>
+        <element name="EventFeedItem" positionX="-54" positionY="36" width="128" height="90"/>
+        <element name="ListingFeedItem" positionX="-36" positionY="54" width="128" height="75"/>
+        <element name="Product" positionX="-18" positionY="63" width="128" height="90"/>
     </elements>
 </model>
