@@ -13,9 +13,9 @@ import Services
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
 public enum FeedItemType: String {
-    case video = "Video"
-    case event = "Event"
-    case listing = "Listing"
+    case video = "video"
+    case event = "event"
+    case listing = "listing"
     case unknown
 }
 
@@ -24,7 +24,7 @@ public class FeedItem: NSManagedObject {
     @NSManaged fileprivate var primitiveType: String
     static let typeKey = "type"
     
-    var type: FeedItemType {
+    public var type: FeedItemType {
         get {
             willAccessValue(forKey: FeedItem.typeKey)
             let type = FeedItemType(rawValue: primitiveType)
@@ -78,7 +78,7 @@ public class FeedItem: NSManagedObject {
             let title = json["title"] as? String,
             let index = json["index"] as? Int64,
             let description = json["description"] as? String,
-            let type = FeedItemType(rawValue: json["type"] as? String ?? "") else { return nil }
+            let type = FeedItemType(rawValue: (json["type"] as? String ?? "").lowercased()) else { return nil }
         
         var feedItem = FeedItem.fetch(withID: identifier, in: context)
         if feedItem == nil {

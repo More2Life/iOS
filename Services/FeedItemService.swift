@@ -9,10 +9,16 @@
 import Foundation
 import Alamofire
 
+#if DEBUG
+//    let host = "m2l-server-dev.herokuapp.com"
+//#else
+    let host = "m2l-server.herokuapp.com"
+#endif
+
 public final class FeedItemService {
     
     public static func `import`(completion: @escaping (_ json: [[String : Any]]?)->()) {
-        Alamofire.request("https://m2l-server.herokuapp.com/api/feedItems").responseJSON { response in
+        Alamofire.request("https://\(host)/api/feedItems").responseJSON { response in
             completion(response.result.value as? [[String : Any]])
         }
     }
