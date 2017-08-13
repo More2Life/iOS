@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 #if DEBUG
-//    let host = "m2l-server-dev.herokuapp.com"
-//#else
+    let host = "m2l-server-dev.herokuapp.com"
+#else
     let host = "m2l-server.herokuapp.com"
 #endif
 

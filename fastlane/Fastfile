@@ -30,6 +30,12 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
+    
+    version = get_version_number(xcodeproj: "More2Life.xcodeproj", target: "More2Life")
+    testflight_build_number = latest_testflight_build_number({ version: version })
+
+    updateInfoPlists(version: version, build: testflight_build_number + 1)
+    
     gym(scheme: "More2Life") # Build your app - more options available
     pilot
 
@@ -43,6 +49,44 @@ platform :ios do
     gym(scheme: "More2Life") # Build your app - more options available
     deliver(force: true)
     # frameit
+  end
+  
+  desc "Updates all the plists in the app to have the same version and build"
+  lane :updateInfoPlists do |options|
+    # Get App Version
+    version = options[:version]
+    
+    if version == nil
+      UI.important("Please check iTunesConnect and make sure the build number is higher than the lastest build for the version you specify.")
+      
+      if UI.confirm("View list of builds from TestFlight?")
+        sh("fastlane pilot builds") # prints a list of builds up on TestFlight
+      end
+      
+      version = UI.input("What version should this be released as?")
+    end
+    
+    # Get build number
+    build = options[:build]
+    
+    if build == nil
+      build = UI.input("What build number should this be released as?")
+    end
+    
+    infoPlistPaths = [
+      "More2Life/Info.plist"
+    ]
+    
+    infoPlistPaths.each do |infoPlistPath|
+      # Update the Info.plist for the targets
+      update_info_plist(
+        plist_path: infoPlistPath,
+        block: lambda { |plist|
+            plist['CFBundleShortVersionString'] = "#{version}"
+            plist['CFBundleVersion'] = "#{build}"
+          }
+      )
+    end
   end
 
   # You can define as many lanes as you want

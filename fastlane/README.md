@@ -47,6 +47,11 @@ This will also make sure the profile is up to date
 fastlane ios release
 ```
 Deploy a new version to the App Store
+### ios updateInfoPlists
+```
+fastlane ios updateInfoPlists
+```
+Updates all the plists in the app to have the same version and build
 
 ----
 
