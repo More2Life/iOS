@@ -23,5 +23,6 @@ public class EventFeedItem: FeedItem {
         feedItem.eventURL = json["eventUrl"] as? String
         feedItem.address = json["address"] as? String
         feedItem.coordinates = json["coordinates"] as? String
+        feedItem.previewImageURL = json["imageUrl"] as? String
     }
 }

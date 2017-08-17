@@ -17,6 +17,19 @@ public enum FeedItemType: String {
     case event = "event"
     case listing = "listing"
     case unknown
+    
+    public var localizedDescription: String {
+        switch self {
+        case .video:
+            return NSLocalizedString("Video", comment: "Video type string")
+        case .event:
+            return NSLocalizedString("Event", comment: "Event type string")
+        case .listing:
+            return NSLocalizedString("Shop", comment: "Listing type string")
+        case .unknown:
+            return ""
+        }
+    }
 }
 
 public class FeedItem: NSManagedObject {

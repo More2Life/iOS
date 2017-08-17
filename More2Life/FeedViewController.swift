@@ -15,6 +15,11 @@ import AVFoundation
 import AVKit
 
 let imageCache = NSCache<NSString, UIImage>()
+let priceFormatter: NumberFormatter = {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .currency
+    return numberFormatter
+}()
 
 protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
@@ -101,6 +106,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: feedItem.type.reuseIdentifier, for: indexPath) as! FeedItemTableViewCell
         
         cell.titleLabel?.text = feedItem.title
+        cell.typeLabel?.text = feedItem.type.localizedDescription.uppercased()
         cell.typeColorView?.backgroundColor = feedItem.type.color
         
         switch feedItem {
@@ -133,26 +139,24 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             if feedItem is VideoFeedItem {
+                cell.playButton?.isHidden = false
                 cell.playVideo = { [weak self] in
                     self?.performSegue(withIdentifier: "playVideo", sender: feedItem)
                 }
+                
+                cell.previewImageViewRatioConstraint?.isActive = false
+                cell.videoPreviewImageViewRatioConstraint?.isActive = true
+            } else {
+                cell.videoPreviewImageViewRatioConstraint?.isActive = false
+                cell.previewImageViewRatioConstraint?.isActive = true
             }
-        case let feedItem as EventFeedItem:
-            guard let coordinates = feedItem.coordinates else { break }
-            let components = coordinates.components(separatedBy: ",")
-            
-            guard let latitude = Double(components.first ?? ""), let longitude = Double(components.last ?? "") else { break }
-            
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            cell.mapKitView?.setRegion(MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000), animated: false)
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = feedItem.address
-            cell.mapKitView?.addAnnotation(annotation)
-            cell.mapKitView?.selectAnnotation(annotation, animated: false)
         default:
             cell.previewImageView?.isHidden = true
+        }
+        
+        if let feedItem = feedItem as? ListingFeedItem {
+            cell.priceView?.isHidden = false
+            cell.priceLabel?.text = priceFormatter.string(from: NSNumber(value: feedItem.product?.price ?? 0))
         }
         
         return cell
@@ -178,10 +182,14 @@ extension FeedViewController: NSFetchedResultsControllerDelegate {
 
 class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel?
+    @IBOutlet weak var typeLabel: UILabel?
     @IBOutlet weak var previewImageView: UIImageView?
-    @IBOutlet weak var mapKitView: MKMapView?
     @IBOutlet weak var typeColorView: UIView?
+    @IBOutlet weak var priceView: UIView?
+    @IBOutlet weak var priceLabel: UILabel?
     @IBOutlet weak var playButton: UIButton?
+    @IBOutlet var previewImageViewRatioConstraint: NSLayoutConstraint?
+    @IBOutlet var videoPreviewImageViewRatioConstraint: NSLayoutConstraint?
     
     var playVideo: () -> () = { _ in }
     
@@ -200,6 +208,9 @@ class FeedItemTableViewCell: UITableViewCell {
         
         previewImageView?.image = nil
         
+        priceView?.isHidden = true
+    
+        playButton?.isHidden = true
         playVideo = { _ in }
         
         request = nil
@@ -225,16 +236,7 @@ extension FeedItemType {
     }
     
     var reuseIdentifier: String {
-        switch self {
-        case .video:
-            return "Video\(String(describing: FeedItemTableViewCell.self))"
-        case .event:
-            return "Event\(String(describing: FeedItemTableViewCell.self))"
-        case .listing:
-            return "Listing\(String(describing: FeedItemTableViewCell.self))"
-        default:
-            fatalError("Cells not supported for \(self)")
-        }
+        return String(describing: FeedItemTableViewCell.self)
     }
 }
 
@@ -244,3 +246,4 @@ protocol ImagePreviewable {
 
 extension VideoFeedItem: ImagePreviewable { }
 extension ListingFeedItem: ImagePreviewable { }
+extension EventFeedItem: ImagePreviewable { }
