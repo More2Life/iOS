@@ -16,7 +16,6 @@ extension ListingFeedItem {
         return NSFetchRequest<ListingFeedItem>(entityName: "ListingFeedItem")
     }
 
-    @NSManaged public var previewImageURL: String?
     @NSManaged public var product: Product?
 
 }

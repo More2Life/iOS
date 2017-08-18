@@ -18,7 +18,7 @@ import Alamofire
 public final class FeedItemService {
     
     public static func `import`(completion: @escaping (_ json: [[String : Any]]?)->()) {
-        Alamofire.request("https://\(host)/api/feedItems").responseJSON { response in
+        Alamofire.request("https://\(host)/api/feedItems?isActive=true").responseJSON { response in
             completion(response.result.value as? [[String : Any]])
         }
     }

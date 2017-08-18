@@ -2,7 +2,7 @@
 //  FeedItem+CoreDataProperties.swift
 //  More2Life
 //
-//  Created by Porter Hoskins on 8/12/17.
+//  Created by Porter Hoskins on 8/17/17.
 //  Copyright © 2017 More2Life. All rights reserved.
 //
 
@@ -18,8 +18,10 @@ extension FeedItem {
 
     @NSManaged public var identifier: String?
     @NSManaged public var index: Int64
+    @NSManaged public var isActive: Bool
     @NSManaged public var itemDescription: String?
     @NSManaged public var title: String?
-    @NSManaged public var isActive: Bool
+    @NSManaged public var previewImageURL: String?
+    @NSManaged public var previewImage: NSData?
 
 }

@@ -1,5 +1,5 @@
 //
-//  VideoFeedItem+CoreDataProperties.swift
+//  StoryFeedItem+CoreDataProperties.swift
 //  More2Life
 //
 //  Created by Porter Hoskins on 8/12/17.
@@ -10,13 +10,12 @@ import Foundation
 import CoreData
 
 
-extension VideoFeedItem {
+extension StoryFeedItem {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<VideoFeedItem> {
-        return NSFetchRequest<VideoFeedItem>(entityName: "VideoFeedItem")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StoryFeedItem> {
+        return NSFetchRequest<StoryFeedItem>(entityName: "StoryFeedItem")
     }
 
-    @NSManaged public var previewImageURL: String?
     @NSManaged public var videoURL: String?
     @NSManaged public var publishDate: NSDate?
     @NSManaged public var views: Int64

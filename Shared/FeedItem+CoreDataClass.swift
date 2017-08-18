@@ -15,19 +15,19 @@ let imageCache = NSCache<NSString, UIImage>()
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
 public enum FeedItemType: String {
-    case video = "video"
+    case story = "story"
     case event = "event"
     case listing = "listing"
     case unknown
     
     public var localizedDescription: String {
         switch self {
-        case .video:
+        case .story:
             return NSLocalizedString("Video", comment: "Video type string")
         case .event:
             return NSLocalizedString("Event", comment: "Event type string")
         case .listing:
-            return NSLocalizedString("Give", comment: "Listing type string")
+            return NSLocalizedString("Shop", comment: "Listing type string")
         case .unknown:
             return ""
         }
@@ -35,7 +35,7 @@ public enum FeedItemType: String {
     
     public var localizedCallToActionTitle: String {
         switch self {
-        case .video:
+        case .story:
             return NSLocalizedString("Donate", comment: "Video type string")
         case .event:
             return NSLocalizedString("Register", comment: "Event type string")
@@ -83,8 +83,22 @@ public class FeedItem: NSManagedObject {
                     
                     guard let json = json else { return }
                     
+                    // Parse new items
+                    var items: [FeedItem] = []
                     for item in json {
-                        feedItem(from: item, in: context)
+                        guard let feedItem = feedItem(from: item, in: context) else { continue }
+                        items.append(feedItem)
+                    }
+                    
+                    // Cleanup old feed items
+                    do {
+                        let fetchRequest: NSFetchRequest<FeedItem> = FeedItem.fetchRequest()
+                        fetchRequest.predicate = NSPredicate(format: "NOT (SELF IN %@)", items)
+                        
+                        let result = try context.fetch(fetchRequest)
+                        result.forEach { context.delete($0) }
+                    } catch {
+                        print("Couldn't clean up FeedItems \(error)")
                     }
                     
                     context.persist()
@@ -111,8 +125,8 @@ public class FeedItem: NSManagedObject {
         var feedItem = FeedItem.fetch(withID: identifier, in: context)
         if feedItem == nil {
             switch type {
-            case .video:
-                feedItem = VideoFeedItem(context: context)
+            case .story:
+                feedItem = StoryFeedItem(context: context)
             case .event:
                 feedItem = EventFeedItem(context: context)
             case .listing:
@@ -127,10 +141,11 @@ public class FeedItem: NSManagedObject {
         feedItem?.index = index
         feedItem?.itemDescription = description
         feedItem?.isActive = json["isActive"] as? Bool ?? false
+        feedItem?.previewImageURL = json["previewImageUrl"] as? String ?? json["imageUrl"] as? String
         
         switch type {
-        case .video:
-            VideoFeedItem.hydrate(feedItem, with: json)
+        case .story:
+            StoryFeedItem.hydrate(feedItem, with: json)
         case .event:
             EventFeedItem.hydrate(feedItem, with: json)
         case .listing:
@@ -171,11 +186,18 @@ public class FeedItem: NSManagedObject {
     ///   - completion: returns the image and the request
     /// - Returns: The request made to the server for the image.
     @discardableResult
-    public static func previewImage(with urlString: NSString, completion: @escaping (_ image: UIImage?, _ request: URLRequest?) -> ()) -> DataRequest? {
+    public static func previewImage(with urlString: NSString, for feedItem: FeedItem, in context: NSManagedObjectContext, completion: @escaping (_ image: UIImage?, _ request: URLRequest?) -> ()) -> DataRequest? {
         if let image = imageCache.object(forKey: urlString as NSString) {
+            // Get image out of memory
+            completion(image, nil)
+            return nil
+        } else if let imageData = feedItem.previewImage, let image = UIImage(data: imageData as Data) {
+            // Get image off of disk
+            imageCache.setObject(image, forKey: urlString as NSString)
             completion(image, nil)
             return nil
         } else {
+            // Try to get image from the network
             return Alamofire.request(urlString as String).validate(contentType: ["image/*"]).response { response in
                 var image: UIImage?
                 defer {
@@ -193,8 +215,13 @@ public class FeedItem: NSManagedObject {
                     return
                 }
                 
-                imageCache.setObject(previewImage, forKey: urlString as NSString)
                 image = previewImage
+                
+                imageCache.setObject(previewImage, forKey: urlString as NSString)
+                context.perform {
+                    feedItem.previewImage = data as NSData
+                    context.persist()
+                }
             }
         }
     }

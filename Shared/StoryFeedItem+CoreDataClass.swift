@@ -1,5 +1,5 @@
 //
-//  VideoFeedItem+CoreDataClass.swift
+//  StoryFeedItem+CoreDataClass.swift
 //  More2Life
 //
 //  Created by Porter Hoskins on 8/12/17.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(VideoFeedItem)
-public class VideoFeedItem: FeedItem {
+@objc(StoryFeedItem)
+public class StoryFeedItem: FeedItem {
 
     /// Hydrates the feed item with video specific data
     ///
@@ -18,7 +18,7 @@ public class VideoFeedItem: FeedItem {
     ///   - feedItem: the video feed item
     ///   - json: the json for the individual feed item
     class func hydrate(_ feedItem: FeedItem?, with json: [String : Any]) {
-        guard let feedItem = feedItem as? VideoFeedItem else { return }
+        guard let feedItem = feedItem as? StoryFeedItem else { return }
         
         feedItem.previewImageURL = json["previewImageUrl"] as? String
         feedItem.videoURL = json["videoUrl"] as? String

@@ -73,7 +73,7 @@ class FeedViewController: UIViewController {
         
         switch segue.destination {
         case let viewController as AVPlayerViewController:
-            guard let item = sender as? VideoFeedItem, let url = URL(string: item.videoURL ?? "") else { break }
+            guard let item = sender as? StoryFeedItem, let url = URL(string: item.videoURL ?? "") else { break }
             let player = AVPlayer(url: url)
             player.play()
             viewController.player = player
@@ -103,11 +103,9 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.typeLabel?.text = feedItem.type.localizedDescription.uppercased()
         cell.typeColorView?.backgroundColor = feedItem.type.color
         
-        switch feedItem {
-        case let feedItem as ImagePreviewable:
-            guard let imageURL = feedItem.previewImageURL else { break }
-            
-            cell.request = FeedItem.previewImage(with: imageURL as NSString) { [weak cell] image, request in
+        // Preview Image
+        if let imageURL = feedItem.previewImageURL {
+            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak cell] image, request in
                 guard request?.url?.absoluteString == cell?.request?.request?.url?.absoluteString else { return }
                 
                 if Thread.isMainThread {
@@ -118,17 +116,17 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
-            
-            if feedItem is VideoFeedItem {
-                cell.playButton?.isHidden = false
-                cell.playVideo = { [weak self] in
-                    self?.performSegue(withIdentifier: "playVideo", sender: feedItem)
-                }
-            }
-        default:
-            cell.previewImageView?.isHidden = true
         }
         
+        // Video Button
+        if let feedItem = feedItem as? StoryFeedItem, feedItem.videoURL != nil {
+            cell.playButton?.isHidden = false
+            cell.playVideo = { [weak self] in
+                self?.performSegue(withIdentifier: "playVideo", sender: feedItem)
+            }
+        }
+        
+        // Price Label
         if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
             cell.priceView?.isHidden = false
             cell.priceLabel?.text = price
@@ -197,7 +195,7 @@ class FeedItemTableViewCell: UITableViewCell {
 extension FeedItemType {
     var color: UIColor {
         switch self {
-        case .video:
+        case .story:
             return Color.purple.uiColor
         case .listing:
             return Color.red.uiColor
@@ -212,11 +210,3 @@ extension FeedItemType {
         return String(describing: FeedItemTableViewCell.self)
     }
 }
-
-protocol ImagePreviewable {
-    var previewImageURL: String? { get }
-}
-
-extension VideoFeedItem: ImagePreviewable { }
-extension ListingFeedItem: ImagePreviewable { }
-extension EventFeedItem: ImagePreviewable { }

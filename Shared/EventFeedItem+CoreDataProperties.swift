@@ -19,5 +19,4 @@ extension EventFeedItem {
     @NSManaged public var eventURL: String?
     @NSManaged public var address: String?
     @NSManaged public var coordinates: String?
-    @NSManaged public var previewImageURL: String?
 }

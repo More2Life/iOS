@@ -10,6 +10,8 @@ import UIKit
 import Shared
 import SafariServices
 import PassKit
+import AVKit
+import AVFoundation
 
 class DetailViewController: UIViewController, FeedDetailing {
     @IBOutlet weak var scrollView: UIScrollView?
@@ -22,6 +24,7 @@ class DetailViewController: UIViewController, FeedDetailing {
     
     @IBOutlet weak var actionStackView: UIStackView?
     @IBOutlet weak var actionButton: UIButton?
+    @IBOutlet weak var actionGradientView: UIView?
     
     var feedItem: FeedItem?
 
@@ -33,12 +36,13 @@ class DetailViewController: UIViewController, FeedDetailing {
         descriptionLabel?.text = feedItem?.itemDescription
         actionButton?.setTitle(feedItem?.type.localizedCallToActionTitle, for: .normal)
         priceView?.isHidden = true
+        playButton?.isHidden = true
         
         guard let feedItem = feedItem else { return }
         
         // Preview image
-        if let imageURL = (feedItem as? ImagePreviewable)?.previewImageURL {
-            FeedItem.previewImage(with: imageURL as NSString) { [weak self] image, request in
+        if let imageURL = feedItem.previewImageURL {
+            FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak self] image, request in
                 if Thread.isMainThread {
                     self?.previewImageView?.image = image
                 } else {
@@ -53,17 +57,20 @@ class DetailViewController: UIViewController, FeedDetailing {
         case _ as EventFeedItem:
             break
         case let feedItem as ListingFeedItem:
-            actionStackView?.addArrangedSubview(PKPaymentButton(type: .buy, style: .black))
-            actionButton?.isHidden = true
+            actionStackView?.insertArrangedSubview(PKPaymentButton(type: .buy, style: .black), at: 0)
+//            actionButton?.isHidden = true
             
             if let price = feedItem.formattedPrice {
                 priceView?.isHidden = false
                 priceLabel?.text = price
             }
-        case _ as VideoFeedItem:
-            actionStackView?.addArrangedSubview(PKPaymentButton(type: .donate, style: .black))
+        case let feedItem as StoryFeedItem:
+            actionStackView?.insertArrangedSubview(PKPaymentButton(type: .donate, style: .black), at: 0)
             actionButton?.isHidden = true
-            break
+            
+            if feedItem.videoURL != nil {
+                playButton?.isHidden = false
+            }
         default:
             break
         }
@@ -86,15 +93,25 @@ class DetailViewController: UIViewController, FeedDetailing {
             break
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func playTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "playVideo", sender: feedItem)
     }
-    */
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let sender = sender else { return }
+        
+        switch segue.destination {
+        case let viewController as AVPlayerViewController:
+            guard let item = sender as? StoryFeedItem, let url = URL(string: item.videoURL ?? "") else { break }
+            let player = AVPlayer(url: url)
+            player.play()
+            viewController.player = player
+        default:
+            break
+        }
+    }
 
 }
