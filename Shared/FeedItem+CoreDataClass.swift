@@ -9,7 +9,9 @@
 import Foundation
 import CoreData
 import Services
+import Alamofire
 
+let imageCache = NSCache<NSString, UIImage>()
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
 public enum FeedItemType: String {
@@ -25,7 +27,20 @@ public enum FeedItemType: String {
         case .event:
             return NSLocalizedString("Event", comment: "Event type string")
         case .listing:
-            return NSLocalizedString("Shop", comment: "Listing type string")
+            return NSLocalizedString("Give", comment: "Listing type string")
+        case .unknown:
+            return ""
+        }
+    }
+    
+    public var localizedCallToActionTitle: String {
+        switch self {
+        case .video:
+            return NSLocalizedString("Donate", comment: "Video type string")
+        case .event:
+            return NSLocalizedString("Register", comment: "Event type string")
+        case .listing:
+            return NSLocalizedString("Buy", comment: "Listing type string")
         case .unknown:
             return ""
         }
@@ -145,6 +160,42 @@ public class FeedItem: NSManagedObject {
         } catch {
             print("Error finding Feed item \(identifier) \(error)")
             return nil
+        }
+    }
+    
+    /// Returns a image for a preview image url string. If the image is cached it will fetch from disk, otherwise
+    /// it will go to the network to get it.
+    ///
+    /// - Parameters:
+    ///   - urlString: The url string pointing to an image.
+    ///   - completion: returns the image and the request
+    /// - Returns: The request made to the server for the image.
+    @discardableResult
+    public static func previewImage(with urlString: NSString, completion: @escaping (_ image: UIImage?, _ request: URLRequest?) -> ()) -> DataRequest? {
+        if let image = imageCache.object(forKey: urlString as NSString) {
+            completion(image, nil)
+            return nil
+        } else {
+            return Alamofire.request(urlString as String).validate(contentType: ["image/*"]).response { response in
+                var image: UIImage?
+                defer {
+                    completion(image, response.request)
+                }
+                
+                guard response.error == nil, let data = response.data, let previewImage = UIImage(data: data) else {
+                    /*
+                     If the cell went off-screen before the image was downloaded, we cancel it and
+                     an NSURLErrorDomain (-999: cancelled) is returned. This is a normal behavior.
+                     */
+                    if let error = response.error {
+                        print("Error fetching image in feed cell \(error) for \(urlString)")
+                    }
+                    return
+                }
+                
+                imageCache.setObject(previewImage, forKey: urlString as NSString)
+                image = previewImage
+            }
         }
     }
 }

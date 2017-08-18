@@ -7,4 +7,7 @@
    <FileRef
       location = "group:Alamofire-4.4.0/Alamofire.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:mobile-buy-sdk-ios-3.0.6/Buy.xcodeproj">
+   </FileRef>
 </Workspace>

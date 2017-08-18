@@ -13,13 +13,7 @@ import Alamofire
 import MapKit
 import AVFoundation
 import AVKit
-
-let imageCache = NSCache<NSString, UIImage>()
-let priceFormatter: NumberFormatter = {
-    let numberFormatter = NumberFormatter()
-    numberFormatter.numberStyle = .currency
-    return numberFormatter
-}()
+import Pay
 
 protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
@@ -27,8 +21,6 @@ protocol FeedDetailing {
 
 class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
-    
-    
     
     var _fetchedResultsController: NSFetchedResultsController<FeedItem>?
     var fetchedResultsController: NSFetchedResultsController<FeedItem> {
@@ -66,6 +58,8 @@ class FeedViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
         tableView?.refreshControl = refreshControl
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func refresh(sender: UIRefreshControl?) {
@@ -113,27 +107,14 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         case let feedItem as ImagePreviewable:
             guard let imageURL = feedItem.previewImageURL else { break }
             
-            if let image = imageCache.object(forKey: imageURL as NSString) {
-                cell.previewImageView?.image = image
-            } else {
-                cell.request = Alamofire.request(imageURL).validate(contentType: ["image/*"]).response { response in
-                    guard response.error == nil, let data = response.data, let image = UIImage(data: data) else {
-                        /*
-                         If the cell went off-screen before the image was downloaded, we cancel it and
-                         an NSURLErrorDomain (-999: cancelled) is returned. This is a normal behavior.
-                         */
-                        if let error = response.error {
-                            print("Error fetching image in feed cell \(error) for \(imageURL)")
-                        }
-                        return
-                    }
-                    
-                    imageCache.setObject(image, forKey: imageURL as NSString)
-                    
-                    if response.request?.url?.absoluteString == cell.request?.request?.url?.absoluteString {
-                        DispatchQueue.main.async {
-                            cell.previewImageView?.image = image
-                        }
+            cell.request = FeedItem.previewImage(with: imageURL as NSString) { [weak cell] image, request in
+                guard request?.url?.absoluteString == cell?.request?.request?.url?.absoluteString else { return }
+                
+                if Thread.isMainThread {
+                    cell?.previewImageView?.image = image
+                } else {
+                    DispatchQueue.main.async {
+                        cell?.previewImageView?.image = image
                     }
                 }
             }
@@ -143,34 +124,21 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.playVideo = { [weak self] in
                     self?.performSegue(withIdentifier: "playVideo", sender: feedItem)
                 }
-                
-                cell.previewImageViewRatioConstraint?.isActive = false
-                cell.videoPreviewImageViewRatioConstraint?.isActive = true
-            } else {
-                cell.videoPreviewImageViewRatioConstraint?.isActive = false
-                cell.previewImageViewRatioConstraint?.isActive = true
             }
         default:
             cell.previewImageView?.isHidden = true
         }
         
-        if let feedItem = feedItem as? ListingFeedItem {
+        if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
             cell.priceView?.isHidden = false
-            cell.priceLabel?.text = priceFormatter.string(from: NSNumber(value: feedItem.product?.price ?? 0))
+            cell.priceLabel?.text = price
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let feedItem = fetchedResultsController.object(at: indexPath)
-        
-        switch feedItem.type {
-//        case .video:
-//            performSegue(withIdentifier: "video", sender: feedItem)
-        default:
-            break
-        }
+        performSegue(withIdentifier: "detail", sender: fetchedResultsController.object(at: indexPath))
     }
 }
 
@@ -188,10 +156,15 @@ class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var priceView: UIView?
     @IBOutlet weak var priceLabel: UILabel?
     @IBOutlet weak var playButton: UIButton?
-    @IBOutlet var previewImageViewRatioConstraint: NSLayoutConstraint?
-    @IBOutlet var videoPreviewImageViewRatioConstraint: NSLayoutConstraint?
     
     var playVideo: () -> () = { _ in }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        priceView?.isHidden = true
+        playButton?.isHidden = true
+    }
     
     var request: DataRequest? {
         didSet {
