@@ -178,11 +178,11 @@
 		049C7B051F3FBF12009BAD81 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		04C75C241F45E780005DFC3F /* Pay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D074E01F2D0346007E20D6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20081061F561EB100F43D97 /* PriceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceButton.swift; sourceTree = "<group>"; };
+		E20081061F561EB100F43D97 /* PriceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PriceButton.swift; path = ../More2Life/PriceButton.swift; sourceTree = "<group>"; };
 		E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		E27BDA881F54C66900112A4C /* BuyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
-		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = ../More2Life/MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +248,8 @@
 		044194511F2D092500AFB904 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E27BDA8A1F56098A00112A4C /* MainButton.swift */,
+				E20081061F561EB100F43D97 /* PriceButton.swift */,
 				044194521F2D092500AFB904 /* Shared.h */,
 				044194531F2D092500AFB904 /* Info.plist */,
 				0441946D1F2D093C00AFB904 /* Model.xcdatamodeld */,
@@ -321,8 +323,6 @@
 				04638E8F1F2CFC5800E746A8 /* Info.plist */,
 				049C7B031F3FA442009BAD81 /* SplitViewController.swift */,
 				E27BDA881F54C66900112A4C /* BuyModalViewController.swift */,
-				E27BDA8A1F56098A00112A4C /* MainButton.swift */,
-				E20081061F561EB100F43D97 /* PriceButton.swift */,
 			);
 			path = More2Life;
 			sourceTree = "<group>";

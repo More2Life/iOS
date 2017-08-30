@@ -8,28 +8,50 @@
 
 import Foundation
 import UIKit
+import Shared
 
-class MainButton: UIButton {
+
+@IBDesignable class MainButton: UIButton {
 	
-	override func awakeFromNib() {
-		layer.cornerRadius = 10
+	@IBInspectable var startColor: UIColor = Color.blueDark.uiColor {
+		didSet{
+			setupView()
+		}
+	}
+ 
+	@IBInspectable var endColor:  UIColor = Color.blueLight.uiColor {
+		didSet{
+			setupView()
+		}
+	}
+ 
+	@IBInspectable var cornerRadius: CGFloat = 10.0 {
+		didSet{
+			setupView()
+		}
 	}
 	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		addGradientBackgroundLayer()
-	}
-	
-	// MARK: Private
-	private func addGradientBackgroundLayer() {
-		let gradientLayer = CAGradientLayer()
-		let color1 = UIColor(red:13/255, green:76/255, blue:146/255, alpha: 1.0).cgColor as CGColor
-		let color2 = UIColor(red:52/255, green:110/255, blue:234/255, alpha: 1.0).cgColor as CGColor
-		gradientLayer.colors = [color1, color2]
+	private func setupView(){
+		
+		let colors:Array = [startColor.cgColor, endColor.cgColor]
+		gradientLayer.colors = colors
+		gradientLayer.cornerRadius = cornerRadius
 		gradientLayer.startPoint = CGPoint(x: 0, y: 1)
 		gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-		gradientLayer.frame = layer.bounds
-		gradientLayer.cornerRadius = 10
-		layer.insertSublayer(gradientLayer, at: 0)
+		
+		self.setNeedsDisplay()
+		
+	}
+	
+	var gradientLayer: CAGradientLayer {
+		return layer as! CAGradientLayer
+	}
+	
+	override class var layerClass: AnyClass {
+		return CAGradientLayer.self
+	}
+	
+	override func awakeFromNib() {
+		setupView()
 	}
 }

@@ -9,12 +9,29 @@
 import Foundation
 import UIKit
 
-class PriceButton: UIButton {
+@IBDesignable class PriceButton: UIButton {
 	
-	override func awakeFromNib() {
-		layer.cornerRadius = 10
+
+ 
+	@IBInspectable var cornerRadius: CGFloat = 10.0 {
+		didSet{
+			setupView()
+		}
+	}
+	
+	private func setupView(){
+		
+		layer.cornerRadius = cornerRadius
 		layer.borderWidth = 2
 		layer.borderColor = (UIColor.red).cgColor as CGColor
 		self.setTitleColor(UIColor.red, for: .normal)
+		
+		self.setNeedsDisplay()
+		
+	}
+
+	
+	override func awakeFromNib() {
+		setupView()
 	}
 }
