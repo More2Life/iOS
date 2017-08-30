@@ -33,7 +33,7 @@ class HalfModalPresentationController : UIPresentationController {
         blurEffectView.contentView.addSubview(vibrancyEffectView)
 		
 		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissOnTap))
-		view.addGestureRecognizer(gestureRecognizer);
+		view.addGestureRecognizer(gestureRecognizer)
 		
         _dimmingView = view
 		
@@ -45,7 +45,10 @@ class HalfModalPresentationController : UIPresentationController {
 	}
  
     override var frameOfPresentedViewInContainerView: CGRect {
-        return CGRect(x: 0, y: containerView!.bounds.height * 0.333 , width: containerView!.bounds.width, height: containerView!.bounds.height * 0.666)
+		guard let containerView = containerView else {
+			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
+		}
+        return CGRect(x: 0, y: containerView.bounds.height * 0.333 , width: containerView.bounds.width, height: containerView.bounds.height * 0.666)
     }
 	
 	override func containerViewWillLayoutSubviews() {

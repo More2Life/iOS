@@ -98,7 +98,7 @@ class FeedViewController: UIViewController {
 		buyModalViewController.modalPresentationStyle = .custom
 		buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
 		
-		present(buyModalViewController, animated: true, completion: nil);
+		present(buyModalViewController, animated: true, completion: nil)
 
 	}
 }
