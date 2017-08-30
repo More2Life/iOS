@@ -166,7 +166,7 @@ class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView?
     @IBOutlet weak var typeColorView: UIView?
     @IBOutlet weak var priceView: UIView?
-	@IBOutlet weak var priceButton: PriceButton!
+	@IBOutlet weak var priceButton: PriceButton?
     @IBOutlet weak var playButton: UIButton?
     
     var playVideo: () -> () = { _ in }
