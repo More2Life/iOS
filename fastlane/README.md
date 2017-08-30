@@ -52,6 +52,16 @@ Deploy a new version to the App Store
 fastlane ios updateInfoPlists
 ```
 Updates all the plists in the app to have the same version and build
+### ios generateProvisioning
+```
+fastlane ios generateProvisioning
+```
+Generates certificates and provisioning profiles
+### ios downloadProvisioning
+```
+fastlane ios downloadProvisioning
+```
+Downloads certificates and provisioning profiles
 
 ----
 

@@ -88,6 +88,56 @@ platform :ios do
       )
     end
   end
+  
+  desc "Generates certificates and provisioning profiles"
+  lane :generateProvisioning do |options|
+    
+    type = options[:type]
+    if type == nil
+      type = UI.select("What type of provisioning do you want to generate?", ["development", "appstore", "all"])
+    end
+
+    UI.header "Step: 🔑  Provisioning => " + type
+    
+    if UI.confirm ("Are you sure you want to generate new Development certificates and provisioning profiles? This will cause the whole team to have to re-download Development certificates and profiles before they can build on device?")
+      if type == "all"
+        provisioning(type: "development")
+        provisioning(type: "appstore")
+      else 
+        provisioning(type: type)
+      end
+    else
+      UI.error "Generation of " + type + " certs and profiles has been cancelled."
+    end
+    
+  end
+  
+  desc "Downloads certificates and provisioning profiles"
+  lane :downloadProvisioning do |options|
+    
+    type = options[:type]
+    if type == nil
+      UI.message "To skip having to select a type, provide the type by calling `fastlane downloadProvisioning type:<TYPE>"
+      type = UI.select("What type of provisioning do you want to download?", ["development", "appstore", "all"])
+    end
+    
+    if type == "all"
+      fetchProvisioning(type: "development")
+      fetchProvisioning(type: "appstore")
+    else
+      fetchProvisioning(type: type)
+    end
+  end
+
+  desc "Create provisioning profiles"
+  private_lane :provisioning do |options|    
+    match(type: options[:type], app_identifier: "com.coachkalani.More2Life", force_for_new_devices: true)
+  end
+
+  desc "🐕 Fetch provisioning 🐕"
+  private_lane :fetchProvisioning do |options|
+    match(type: options[:type], app_identifier: "com.coachkalani.More2Life", readonly: false)
+  end
 
   # You can define as many lanes as you want
 
