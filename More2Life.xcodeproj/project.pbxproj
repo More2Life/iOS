@@ -48,6 +48,11 @@
 		04C75C251F45E780005DFC3F /* Pay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C75C241F45E780005DFC3F /* Pay.framework */; };
 		04C75C261F45E780005DFC3F /* Pay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04C75C241F45E780005DFC3F /* Pay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04D074E11F2D0346007E20D6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D074E01F2D0346007E20D6 /* Alamofire.framework */; };
+		E20081071F561EB100F43D97 /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20081061F561EB100F43D97 /* PriceButton.swift */; };
+		E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */; };
+		E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */; };
+		E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA881F54C66900112A4C /* BuyModalViewController.swift */; };
+		E27BDA8B1F56098A00112A4C /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA8A1F56098A00112A4C /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +178,11 @@
 		049C7B051F3FBF12009BAD81 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		04C75C241F45E780005DFC3F /* Pay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D074E01F2D0346007E20D6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20081061F561EB100F43D97 /* PriceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PriceButton.swift; path = ../More2Life/PriceButton.swift; sourceTree = "<group>"; };
+		E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
+		E27BDA881F54C66900112A4C /* BuyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
+		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = ../More2Life/MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +248,8 @@
 		044194511F2D092500AFB904 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E27BDA8A1F56098A00112A4C /* MainButton.swift */,
+				E20081061F561EB100F43D97 /* PriceButton.swift */,
 				044194521F2D092500AFB904 /* Shared.h */,
 				044194531F2D092500AFB904 /* Info.plist */,
 				0441946D1F2D093C00AFB904 /* Model.xcdatamodeld */,
@@ -300,6 +312,7 @@
 		04638E801F2CFC5800E746A8 /* More2Life */ = {
 			isa = PBXGroup;
 			children = (
+				E27BDA7D1F54C4FE00112A4C /* HalfModal */,
 				04638E811F2CFC5800E746A8 /* AppDelegate.swift */,
 				04638E831F2CFC5800E746A8 /* FeedViewController.swift */,
 				049C7B011F3F9D61009BAD81 /* DetailViewController.swift */,
@@ -309,6 +322,7 @@
 				04638E8C1F2CFC5800E746A8 /* LaunchScreen.storyboard */,
 				04638E8F1F2CFC5800E746A8 /* Info.plist */,
 				049C7B031F3FA442009BAD81 /* SplitViewController.swift */,
+				E27BDA881F54C66900112A4C /* BuyModalViewController.swift */,
 			);
 			path = More2Life;
 			sourceTree = "<group>";
@@ -357,6 +371,31 @@
 				04D074E01F2D0346007E20D6 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E27BDA7D1F54C4FE00112A4C /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				E27BDA7F1F54C52400112A4C /* Transition */,
+				E27BDA7E1F54C51300112A4C /* Presentation */,
+			);
+			name = HalfModal;
+			sourceTree = "<group>";
+		};
+		E27BDA7E1F54C51300112A4C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		E27BDA7F1F54C52400112A4C /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,9 +716,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */,
 				049C7B041F3FA442009BAD81 /* SplitViewController.swift in Sources */,
+				E27BDA8B1F56098A00112A4C /* MainButton.swift in Sources */,
 				04638E861F2CFC5800E746A8 /* SecondViewController.swift in Sources */,
+				E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */,
 				04638E821F2CFC5800E746A8 /* AppDelegate.swift in Sources */,
+				E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */,
+				E20081071F561EB100F43D97 /* PriceButton.swift in Sources */,
 				049C7B021F3F9D61009BAD81 /* DetailViewController.swift in Sources */,
 				04638E841F2CFC5800E746A8 /* FeedViewController.swift in Sources */,
 			);
@@ -961,6 +1005,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -970,8 +1015,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf49b131-caa4-4f84-b21e-a3c162e8af9f";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life";
+				PROVISIONING_PROFILE = "a5a22912-8745-4c07-87e1-461f297c4457";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

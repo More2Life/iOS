@@ -21,6 +21,8 @@ protocol FeedDetailing {
 
 class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
+	
+	var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
     
     var _fetchedResultsController: NSFetchedResultsController<FeedItem>?
     var fetchedResultsController: NSFetchedResultsController<FeedItem> {
@@ -87,6 +89,18 @@ class FeedViewController: UIViewController {
             }
         }
     }
+	@IBAction func buyTapped(_ sender: Any) {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
+		
+		self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+		
+		buyModalViewController.modalPresentationStyle = .custom
+		buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+		
+		present(buyModalViewController, animated: true, completion: nil)
+
+	}
 }
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
@@ -126,10 +140,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        // Price Label
+        // Price Button
         if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
             cell.priceView?.isHidden = false
-            cell.priceLabel?.text = price
+            cell.priceButton?.titleLabel?.text = price
         }
         
         return cell
@@ -152,7 +166,7 @@ class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView?
     @IBOutlet weak var typeColorView: UIView?
     @IBOutlet weak var priceView: UIView?
-    @IBOutlet weak var priceLabel: UILabel?
+	@IBOutlet weak var priceButton: PriceButton?
     @IBOutlet weak var playButton: UIButton?
     
     var playVideo: () -> () = { _ in }

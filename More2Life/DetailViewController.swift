@@ -30,6 +30,8 @@ class DetailViewController: UIViewController, FeedDetailing {
     var feedItem: FeedItem?
     
     var paySession: PaySession?
+	
+	var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +106,16 @@ class DetailViewController: UIViewController, FeedDetailing {
             guard let eventURLString = feedItem.eventURL, let url = URL(string: eventURLString) else { break }
             
             present(SFSafariViewController(url: url), animated: true, completion: nil)
+		case let feedItem as ListingFeedItem:
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
+			
+			self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+			
+			buyModalViewController.modalPresentationStyle = .custom
+			buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+			
+			present(buyModalViewController, animated: true, completion: nil)
         default:
             break
         }
