@@ -30,6 +30,10 @@ public class Product: NSManagedObject {
         product?.identifier = identifier
         product?.price = price
         
+        let variantsJSON = json["variants"] as? [[String : Any]] ?? []
+        let variants: [ProductVariant] = variantsJSON.flatMap { ProductVariant.variant(from: $0, in: context) }
+        product?.variants = NSOrderedSet(array: variants)
+        
         return product
     }
     

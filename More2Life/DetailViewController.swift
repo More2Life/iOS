@@ -92,11 +92,6 @@ class DetailViewController: UIViewController, FeedDetailing {
     private func applePayTapped() {
         guard let feedItem = feedItem as? ListingFeedItem, let price = feedItem.product?.price else { return }
         
-        let session = PaySession(checkout: PayCheckout(id: UUID().uuidString, lineItems: [PayLineItem(price: Decimal(price), quantity: 1)], discount: nil, shippingAddress: nil, shippingRate: nil, subtotalPrice: Decimal(price), needsShipping: true, totalTax: 0, paymentDue: Decimal(price)), currency: PayCurrency(currencyCode: "USD", countryCode: "US"), merchantID: "merchant.com.coachkalani.shopify")
-        session.delegate = self
-        session.authorize()
-        
-        paySession = session
     }
     
     @IBAction func actionTapped(_ sender: UIButton) {
@@ -141,68 +136,4 @@ class DetailViewController: UIViewController, FeedDetailing {
         }
     }
 
-}
-
-extension DetailViewController: PaySessionDelegate {
-    /// This callback is invoked if the user updates the `shippingContact` and the current address used for shipping is invalidated.
-    /// You should make any necessary API calls to obtain shipping rates here and provide an array of `PayShippingRate` objects.
-    ///
-    /// - parameters:
-    ///     - paySession: The session that invoked the callback.
-    ///     - address:    A partial address that you can use to obtain relevant shipping rates. This address is missing `addressLine1` and `addressLine2`. This information is only available after the user has authorized payment.
-    ///     - checkout:   The current checkout state.
-    ///     - provide:    A completion handler that **must** be invoked with an updated `PayCheckout` and an array of `[PayShippingRate]`. If the `PayPostalAddress` is invalid or you were unable to obtain shipping rates, then returning `nil` or empty shipping rates will result in an invalid address error in Apple Pay.
-    ///
-    public func paySession(_ paySession: Pay.PaySession, didRequestShippingRatesFor address: Pay.PayPostalAddress, checkout: Pay.PayCheckout, provide: @escaping (Pay.PayCheckout?, [Pay.PayShippingRate]) -> Swift.Void) {
-        
-    }
-    
-    /// This callback is invoked if the user updates the `shippingContact` and the current address is invalidated. This method is called *only* for
-    /// checkouts that don't require shipping.
-    /// You should make any necessary API calls to update the checkout with the provided address in order to obtain accurate tax information.
-    ///
-    /// - parameters:
-    ///     - paySession: The session that invoked the callback.
-    ///     - address:    A partial address that you can use to obtain relevant tax information for the checkout. This address is missing `addressLine1` and `addressLine2`. This information is only available after the user has authorized payment.
-    ///     - checkout:   The current checkout state.
-    ///     - provide:    A completion handler that **must** be invoked with an updated `PayCheckout`. Returning `nil` will result in a generic failure in the Apple Pay dialog.
-    ///
-    public func paySession(_ paySession: Pay.PaySession, didUpdateShippingAddress address: Pay.PayPostalAddress, checkout: Pay.PayCheckout, provide: @escaping (Pay.PayCheckout?) -> Swift.Void) {
-        
-    }
-    
-    /// This callback is invoked when the user selects a shipping rate or an initial array of shipping rates is provided. In the latter case, the first shipping rate in the array will be used. You should make any necessary API calls to update the checkout with the selected shipping rate here.
-    ///
-    /// - parameters:
-    ///     - paySession:   The session that invoked the callback.
-    ///     - shippingRate: The selected shipping rate.
-    ///     - checkout:     The current checkout state.
-    ///     - provide:      A completion handler that **must** be invoked with an updated `PayCheckout`. Returning `nil` will result in a generic failure in the Apple Pay dialog.
-    ///
-    public func paySession(_ paySession: Pay.PaySession, didSelectShippingRate shippingRate: Pay.PayShippingRate, checkout: Pay.PayCheckout, provide: @escaping (Pay.PayCheckout?) -> Swift.Void) {
-        
-    }
-    
-    /// This callback is invoked when the user authorizes payment using Touch ID or passcode. You should make necessary API calls to update and complete the checkout with final information here (eg: billing address).
-    ///
-    /// - parameters:
-    ///     - paySession:          The session that invoked the callback.
-    ///     - authorization:       Authorization object that encapsulates the token and other relevant information: billing address, complete shipping address, and shipping rate.
-    ///     - checkout:            The current checkout state.
-    ///     - completeTransaction: A completion handler that **must** be invoked with the final transaction status.
-    ///
-    public func paySession(_ paySession: Pay.PaySession, didAuthorizePayment authorization: Pay.PayAuthorization, checkout: Pay.PayCheckout, completeTransaction: @escaping (Pay.PaySession.TransactionStatus) -> Swift.Void) {
-        
-    }
-    
-    /// This callback is invoked when the Apple Pay authorization controller is dismissed.
-    ///
-    /// - parameters:
-    ///     - paySession: The session that invoked the callback.
-    ///
-    public func paySessionDidFinish(_ paySession: Pay.PaySession){
-        
-    }
-
-    
 }

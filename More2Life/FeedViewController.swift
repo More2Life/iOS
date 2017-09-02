@@ -89,17 +89,26 @@ class FeedViewController: UIViewController {
             }
         }
     }
+    
 	@IBAction func buyTapped(_ sender: Any) {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
-		
-		self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
-		
-		buyModalViewController.modalPresentationStyle = .custom
-		buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
-		
-		present(buyModalViewController, animated: true, completion: nil)
-
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
+//        
+//        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+//        
+//        buyModalViewController.modalPresentationStyle = .custom
+//        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+//        
+//        present(buyModalViewController, animated: true, completion: nil)
+        
+        guard let listingItem = sender as? ListingFeedItem else { return }
+        guard let product = listingItem.product, let variant = product.variants.firstObject as? ProductVariant else { return }
+        
+        Shopify.shared.initiateCheckout(with: variant.vendorID, price: product.price) { [weak self] errors in
+            print(errors)
+            
+            self?.dismiss(animated: true, completion: nil)
+        }
 	}
 }
 
@@ -142,8 +151,11 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Price Button
         if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
-            cell.priceView?.isHidden = false
-            cell.priceButton?.titleLabel?.text = price
+            cell.priceButton?.isHidden = false
+            cell.priceButton?.setTitle(price, for: .normal)
+            cell.buy = { [weak self] in
+                self?.buyTapped(feedItem)
+            }
         }
         
         return cell
@@ -165,16 +177,16 @@ class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel?
     @IBOutlet weak var previewImageView: UIImageView?
     @IBOutlet weak var typeColorView: UIView?
-    @IBOutlet weak var priceView: UIView?
 	@IBOutlet weak var priceButton: PriceButton?
     @IBOutlet weak var playButton: UIButton?
     
     var playVideo: () -> () = { _ in }
+    var buy: () -> () = { _ in }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        priceView?.isHidden = true
+        priceButton?.isHidden = true
         playButton?.isHidden = true
     }
     
@@ -193,7 +205,7 @@ class FeedItemTableViewCell: UITableViewCell {
         
         previewImageView?.image = nil
         
-        priceView?.isHidden = true
+        priceButton?.isHidden = true
     
         playButton?.isHidden = true
         playVideo = { _ in }
@@ -203,6 +215,10 @@ class FeedItemTableViewCell: UITableViewCell {
     
     @IBAction func playTapped(_ sender: Any) {
         playVideo()
+    }
+    
+    @IBAction func buyTapped(_ sender: Any) {
+        buy()
     }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -172,51 +172,28 @@
                                                                         <action selector="playTapped:" destination="ZIB-fk-apt" eventType="touchUpInside" id="PWB-BP-KtK"/>
                                                                     </connections>
                                                                 </button>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Gp-Ff-Maq">
-                                                                    <rect key="frame" x="8" y="312" width="110" height="55"/>
-                                                                    <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTk-gS-Ffz" userLabel="Price Button" customClass="PriceButton" customModule="More2Life" customModuleProvider="target">
-                                                                            <rect key="frame" x="5.5" y="3" width="100" height="50"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="50" id="SWe-RB-5Oz"/>
-                                                                                <constraint firstAttribute="width" constant="100" id="sp9-dp-4FO"/>
-                                                                            </constraints>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <connections>
-                                                                                <action selector="buyTapped:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Ys4-Vh-1qM"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTk-gS-Ffz" userLabel="Price Button" customClass="PriceButton" customModule="More2Life" customModuleProvider="target">
+                                                                    <rect key="frame" x="8" y="317" width="100" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="WTk-gS-Ffz" firstAttribute="centerY" secondItem="8Gp-Ff-Maq" secondAttribute="centerY" id="0bp-ih-bBi"/>
-                                                                        <constraint firstAttribute="height" secondItem="WTk-gS-Ffz" secondAttribute="height" multiplier="1.1" id="FaB-gc-dqJ"/>
-                                                                        <constraint firstAttribute="width" secondItem="WTk-gS-Ffz" secondAttribute="width" multiplier="1.1" id="Pfl-Vi-Uwr"/>
-                                                                        <constraint firstItem="WTk-gS-Ffz" firstAttribute="centerX" secondItem="8Gp-Ff-Maq" secondAttribute="centerX" id="hQG-gq-9J5"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="SWe-RB-5Oz"/>
+                                                                        <constraint firstAttribute="width" constant="100" id="sp9-dp-4FO"/>
                                                                     </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <real key="value" value="5"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="buyTapped:" destination="ZIB-fk-apt" eventType="touchUpInside" id="kEt-9P-yrf"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="csf-gF-u2M" firstAttribute="top" secondItem="JdO-fz-PwK" secondAttribute="top" id="34O-D0-Wyp"/>
+                                                                <constraint firstItem="WTk-gS-Ffz" firstAttribute="leading" secondItem="JdO-fz-PwK" secondAttribute="leading" constant="8" id="3FD-Xx-e0l"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WTk-gS-Ffz" secondAttribute="bottom" constant="8" id="AGh-0U-hL4"/>
                                                                 <constraint firstItem="csf-gF-u2M" firstAttribute="leading" secondItem="JdO-fz-PwK" secondAttribute="leading" id="Nkb-ZA-lJg"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Gp-Ff-Maq" secondAttribute="trailing" constant="20" id="PMD-mS-3kJ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="N1o-56-zMV" secondAttribute="trailing" constant="8" id="QaL-Q7-3W3"/>
                                                                 <constraint firstAttribute="trailing" secondItem="csf-gF-u2M" secondAttribute="trailing" id="VEe-rw-twF"/>
-                                                                <constraint firstAttribute="bottom" secondItem="8Gp-Ff-Maq" secondAttribute="bottom" constant="8" id="Ysi-nL-x5f"/>
+                                                                <constraint firstItem="N1o-56-zMV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WTk-gS-Ffz" secondAttribute="trailing" constant="8" id="ZE7-c1-tdx"/>
                                                                 <constraint firstItem="N1o-56-zMV" firstAttribute="width" secondItem="csf-gF-u2M" secondAttribute="width" multiplier="0.2" id="bVe-Ls-FAM"/>
-                                                                <constraint firstItem="8Gp-Ff-Maq" firstAttribute="leading" secondItem="JdO-fz-PwK" secondAttribute="leading" constant="8" id="egy-aE-E2p"/>
                                                                 <constraint firstAttribute="height" secondItem="JdO-fz-PwK" secondAttribute="width" multiplier="9:16" identifier="video preview constraint" id="oex-g7-ZIJ"/>
                                                                 <constraint firstAttribute="bottom" secondItem="N1o-56-zMV" secondAttribute="bottom" constant="8" id="uGU-aG-qqD"/>
                                                                 <constraint firstAttribute="bottom" secondItem="csf-gF-u2M" secondAttribute="bottom" id="w3K-WP-T4m"/>
@@ -242,7 +219,6 @@
                                             <outlet property="playButton" destination="N1o-56-zMV" id="yrv-ZO-Odb"/>
                                             <outlet property="previewImageView" destination="csf-gF-u2M" id="cxt-r7-E0N"/>
                                             <outlet property="priceButton" destination="WTk-gS-Ffz" id="Kr5-nQ-YAA"/>
-                                            <outlet property="priceView" destination="8Gp-Ff-Maq" id="csm-5q-TE6"/>
                                             <outlet property="titleLabel" destination="Jei-CZ-5Bz" id="e2Q-Uq-3vY"/>
                                             <outlet property="typeColorView" destination="TYJ-1R-9PS" id="1pw-s9-ZE3"/>
                                             <outlet property="typeLabel" destination="zyp-OW-ZEO" id="W2K-Rq-cVj"/>
