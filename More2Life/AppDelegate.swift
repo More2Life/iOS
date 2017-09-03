@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Storefront
+import Buy
+
+var paymentSettings: Storefront.PaymentSettings?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        Shopify.shared.setupShop()
+        Client.shared.fetchPaymentSettings { paymentSettings in
+            More2Life.paymentSettings = paymentSettings
+        }
         
         return true
     }

@@ -14,13 +14,17 @@ import MapKit
 import AVFoundation
 import AVKit
 import Pay
+import Storefront
+import SafariServices
 
 protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
 }
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, ApplePaying {
     @IBOutlet weak var tableView: UITableView?
+    
+    var paySession: PaySession?
 	
 	var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
     
@@ -103,13 +107,9 @@ class FeedViewController: UIViewController {
         
         guard let listingItem = sender as? ListingFeedItem else { return }
         guard let product = listingItem.product, let variant = product.variants.firstObject as? ProductVariant else { return }
-        
-        Shopify.shared.initiateCheckout(with: variant.vendorID, price: product.price) { [weak self] errors in
-            print(errors)
-            
-            self?.dismiss(animated: true, completion: nil)
-        }
 	}
+    
+    
 }
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
