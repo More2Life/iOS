@@ -21,10 +21,8 @@ protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
 }
 
-class FeedViewController: UIViewController, ApplePaying {
+class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
-    
-    var paySession: PaySession?
     
     var observer: NSObjectProtocol?
 	
@@ -69,7 +67,7 @@ class FeedViewController: UIViewController, ApplePaying {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        observer = NotificationCenter.default.addObserver(forName: .productsFetched, object: nil, queue: OperationQueue.main) { [weak self] _ in
+        observer = NotificationCenter.default.addObserver(forName: .productsImported, object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.tableView?.reloadData()
         }
     }
@@ -120,20 +118,29 @@ class FeedViewController: UIViewController, ApplePaying {
     }
     
 	@IBAction func buyTapped(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
-//        
-//        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
-//        
-//        buyModalViewController.modalPresentationStyle = .custom
-//        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
-//        
-//        present(buyModalViewController, animated: true, completion: nil)
+        guard let feedItem = sender as? FeedItem else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()        
+        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
         
-        guard let listingItem = sender as? ListingFeedItem else { return }
+        buyModalViewController.modalPresentationStyle = .custom
+        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+        buyModalViewController.mode = .action(feedItem: feedItem)
+        
+        present(buyModalViewController, animated: true, completion: nil)
 	}
     
-    
+    @IBAction func giveTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
+        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+        
+        buyModalViewController.modalPresentationStyle = .custom
+        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+        buyModalViewController.mode = .donate
+        
+        present(buyModalViewController, animated: true, completion: nil)
+    }
 }
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {

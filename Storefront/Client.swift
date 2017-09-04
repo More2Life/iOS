@@ -29,7 +29,7 @@ import Buy
 import Pay
 
 extension Notification.Name {
-    public static let productsFetched = Notification.Name(rawValue: "productsFetched")
+    public static let productsImported = Notification.Name(rawValue: "productsImported")
 }
 
 public final class Client {
@@ -126,6 +126,31 @@ public final class Client {
         return task
     }
     
+    @discardableResult
+    public func fetchProducts(limit: Int = 25, after cursor: String? = nil, completion: @escaping (PageableArray<ProductViewModel>?) -> Void) -> Task {
+        
+        let query = ClientQuery.queryForProducts(limit: limit, after: cursor)
+        let task  = self.client.queryGraphWith(query) { (query, error) in
+            error.debugPrint()
+            
+            if let query = query {
+                let shop = query.shop
+                let products = PageableArray(
+                    with:     shop.products.edges,
+                    pageInfo: shop.products.pageInfo
+                )
+                completion(products)
+                
+            } else {
+                print("Failed to load products in shop: \(String(describing: error))")
+                completion(nil)
+            }
+        }
+        
+        task.resume()
+        return task
+    }
+    
     // ----------------------------------
     //  MARK: - Checkout -
     //
@@ -144,6 +169,24 @@ public final class Client {
     
     @discardableResult
     public func updateCheckout(_ id: String, updatingShippingAddress address: PayPostalAddress, completion: @escaping (CheckoutViewModel?) -> Void) -> Task {
+        let mutation = ClientQuery.mutationForUpdateCheckout(id, updatingShippingAddress: address)
+        let task     = self.client.mutateGraphWith(mutation) { response, error in
+            error.debugPrint()
+            
+            if let checkout = response?.checkoutShippingAddressUpdate?.checkout,
+                let _ = checkout.shippingAddress {
+                completion(checkout.viewModel)
+            } else {
+                completion(nil)
+            }
+        }
+        
+        task.resume()
+        return task
+    }
+    
+    @discardableResult
+    public func updateCheckout(_ id: String, updatingShippingAddress address: PayAddress, completion: @escaping (CheckoutViewModel?) -> Void) -> Task {
         let mutation = ClientQuery.mutationForUpdateCheckout(id, updatingShippingAddress: address)
         let task     = self.client.mutateGraphWith(mutation) { response, error in
             error.debugPrint()
@@ -230,6 +273,7 @@ public final class Client {
         let mutation = ClientQuery.mutationForCompleteCheckoutUsingApplePay(checkout, billingAddress: billingAddress, token: token, idempotencyToken: idempotencyToken)
         let task     = self.client.mutateGraphWith(mutation) { response, error in
             error.debugPrint()
+            response?.checkoutCompleteWithTokenizedPayment?.userErrors.forEach { $0.debugPrint() }
             
             if let payment = response?.checkoutCompleteWithTokenizedPayment?.payment {
                 
@@ -275,23 +319,10 @@ public final class Client {
 
 extension Client {
     public func importProducts(completion: @escaping () -> () = { }) {
-        let group = DispatchGroup()
-        group.enter()
-        fetchCollections(limit: 1000) { collections in
-            for collection in collections?.items ?? [] {
-                group.enter()
-                self.fetchProducts(in: collection, limit: 1000) { products in
-                    for product in products?.items ?? [] {
-                        self.products[product.id] = product
-                    }
-                    group.leave()
-                }
-            }
-            group.leave()
-        }
-        
-        group.notify(queue: .main) {
-            NotificationCenter.default.post(name: .productsFetched, object: nil)
+        fetchProducts(limit: 250) { products in
+            (products?.items ?? []).forEach { self.products[$0.handle] = $0 }
+            
+            NotificationCenter.default.post(name: .productsImported, object: nil)
             completion()
         }
     }
@@ -309,5 +340,12 @@ extension Optional where Wrapped == Graph.QueryError {
         case .none:
             break
         }
+    }
+}
+
+extension Storefront.UserError {
+    
+    func debugPrint() {
+        print("Storefront.UserError: \(debugDescription)")
     }
 }

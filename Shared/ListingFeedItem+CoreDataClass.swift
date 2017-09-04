@@ -20,6 +20,6 @@ public class ListingFeedItem: FeedItem {
     class func hydrate(_ feedItem: FeedItem?, with json: [String : Any], in context: NSManagedObjectContext) {
         guard let feedItem = feedItem as? ListingFeedItem else { return }
         feedItem.previewImageURL = json["feedImageUrl"] as? String
-        feedItem.productID = json["productId"] as? String ?? ""
+        feedItem.productID = json["handle"] as? String ?? ""
     }
 }

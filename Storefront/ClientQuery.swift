@@ -85,6 +85,16 @@ final class ClientQuery {
         }
     }
     
+    static func queryForProducts(limit: Int, after cursor: String? = nil) -> Storefront.QueryRootQuery {
+        return Storefront.buildQuery { $0
+            .shop { $0
+                .products(first: Int32(limit), after: cursor) { $0
+                    .fragmentForStandardProduct()
+                }
+            }
+        }
+    }
+    
     // ----------------------------------
     //  MARK: - Checkout -
     //
@@ -116,6 +126,34 @@ final class ClientQuery {
             country:  address.country,
             province: address.province,
             zip:      address.zip
+        )
+        
+        return Storefront.buildMutation { $0
+            .checkoutShippingAddressUpdate(shippingAddress: addressInput, checkoutId: checkoutID) { $0
+                .userErrors { $0
+                    .field()
+                    .message()
+                }
+                .checkout { $0
+                    .fragmentForCheckout()
+                }
+            }
+        }
+    }
+    
+    static func mutationForUpdateCheckout(_ id: String, updatingShippingAddress address: PayAddress) -> Storefront.MutationQuery {
+    
+        let checkoutID   = GraphQL.ID(rawValue: id)
+        let addressInput = Storefront.MailingAddressInput(
+            address1:  address.addressLine1,
+            address2:  address.addressLine2,
+            city:      address.city,
+            country:   address.country,
+            firstName: address.firstName,
+            lastName:  address.lastName,
+            phone:     address.phone,
+            province:  address.province,
+            zip:       address.zip
         )
         
         return Storefront.buildMutation { $0

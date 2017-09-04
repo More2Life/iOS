@@ -38,6 +38,7 @@ extension Storefront.ProductConnectionQuery {
             .node { $0
                 .id()
                 .title()
+                .handle()
                 .descriptionHtml()
                 .variants(first: 250) { $0
                     .fragmentForStandardVariant()

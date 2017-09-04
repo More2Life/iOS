@@ -38,6 +38,7 @@ public final class ProductViewModel: ViewModel {
     public let title:    String
     public let summary:  String
     public let price:    String
+    public let handle:   String
     public let images:   PageableArray<ImageViewModel>
     public let variants: PageableArray<VariantViewModel>
     
@@ -68,6 +69,8 @@ public final class ProductViewModel: ViewModel {
             with:     model.node.variants.edges,
             pageInfo: model.node.variants.pageInfo
         )
+        
+        self.handle   = model.node.handle
     }
 }
 

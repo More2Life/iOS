@@ -163,14 +163,24 @@ extension ApplePaying where Self: UIViewController {
             }
             
             print("Checkout email updated: \(email)")
-            print("Completing checkout...")
-            Client.shared.completeCheckout(checkout, billingAddress: authorization.billingAddress, applePayToken: authorization.token, idempotencyToken: paySession.identifier) { payment in
-                if let payment = payment, checkout.paymentDue == payment.amount {
-                    print("Checkout completed successfully.")
-                    completeTransaction(.success)
-                } else {
-                    print("Checkout failed to complete.")
+            print("Updating shipping address. \(authorization.shippingAddress)")
+            Client.shared.updateCheckout(checkout.id, updatingShippingAddress: authorization.shippingAddress) { updatedCheckout in
+                guard let _ = updatedCheckout else {
                     completeTransaction(.failure)
+                    return
+                }
+                
+                print("Checkout shipping address updated: \(authorization.shippingAddress)")
+                print("Completing checkout...")
+                
+                Client.shared.completeCheckout(checkout, billingAddress: authorization.billingAddress, applePayToken: authorization.token, idempotencyToken: paySession.identifier) { payment in
+                    if let payment = payment, checkout.paymentDue == payment.amount {
+                        print("Checkout completed successfully.")
+                        completeTransaction(.success)
+                    } else {
+                        print("Checkout failed to complete.")
+                        completeTransaction(.failure)
+                    }
                 }
             }
         }

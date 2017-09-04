@@ -62,18 +62,11 @@ class DetailViewController: UIViewController, FeedDetailing {
         case _ as EventFeedItem:
             break
         case let feedItem as ListingFeedItem:
-            let applePayButton = PKPaymentButton(type: .buy, style: .black)
-            applePayButton.addTarget(self, action: #selector(applePayTapped), for: .touchUpInside)
-            actionStackView?.insertArrangedSubview(applePayButton, at: 0)
-            
             if let price = feedItem.price {
                 priceView?.isHidden = false
                 priceLabel?.text = price
             }
         case let feedItem as StoryFeedItem:
-            actionStackView?.insertArrangedSubview(PKPaymentButton(type: .donate, style: .black), at: 0)
-            actionButton?.isHidden = true
-            
             if feedItem.videoURL != nil {
                 playButton?.isHidden = false
             }
@@ -88,12 +81,6 @@ class DetailViewController: UIViewController, FeedDetailing {
         scrollView?.contentInset = UIEdgeInsets(top: scrollView?.contentInset.top ?? 0, left: 0, bottom: (actionStackView?.frame.height ?? 0) + (16 * 2) + (tabBarController?.tabBar.frame.height ?? 0), right: 0)
     }
     
-    @objc
-    private func applePayTapped() {
-        guard let feedItem = feedItem as? ListingFeedItem else { return }
-        
-    }
-    
     @IBAction func actionTapped(_ sender: UIButton) {
         guard let feedItem = feedItem else { return }
         switch feedItem {
@@ -103,12 +90,13 @@ class DetailViewController: UIViewController, FeedDetailing {
             present(SFSafariViewController(url: url), animated: true, completion: nil)
 		case let feedItem as ListingFeedItem:
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
+            let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
 			
 			self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
 			
 			buyModalViewController.modalPresentationStyle = .custom
 			buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+            buyModalViewController.mode = .action(feedItem: feedItem)
 			
 			present(buyModalViewController, animated: true, completion: nil)
         default:
