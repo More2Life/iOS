@@ -34,12 +34,12 @@ public final class ProductViewModel: ViewModel {
     public let model:    ModelType
     let cursor:   String
     
-    let id:       String
-    let title:    String
-    let summary:  String
-    let price:    String
-    let images:   PageableArray<ImageViewModel>
-    let variants: PageableArray<VariantViewModel>
+    public let id:       String
+    public let title:    String
+    public let summary:  String
+    public let price:    String
+    public let images:   PageableArray<ImageViewModel>
+    public let variants: PageableArray<VariantViewModel>
     
     // ----------------------------------
     //  MARK: - Init -

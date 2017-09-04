@@ -25,6 +25,8 @@ class FeedViewController: UIViewController, ApplePaying {
     @IBOutlet weak var tableView: UITableView?
     
     var paySession: PaySession?
+    
+    var observer: NSObjectProtocol?
 	
 	var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
     
@@ -66,11 +68,34 @@ class FeedViewController: UIViewController, ApplePaying {
         tableView?.refreshControl = refreshControl
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        observer = NotificationCenter.default.addObserver(forName: .productsFetched, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.tableView?.reloadData()
+        }
+    }
+    
+    deinit {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     func refresh(sender: UIRefreshControl?) {
+        let group = DispatchGroup()
+        
+        group.enter()
         FeedItem.import(in: Shared.viewContext) { _ in
+            group.leave()
+        }
+        
+        group.enter()
+        Client.shared.importProducts() {
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
             sender?.endRefreshing()
+            self?.tableView?.reloadData()
         }
     }
     
@@ -106,7 +131,6 @@ class FeedViewController: UIViewController, ApplePaying {
 //        present(buyModalViewController, animated: true, completion: nil)
         
         guard let listingItem = sender as? ListingFeedItem else { return }
-        guard let product = listingItem.product, let variant = product.variants.firstObject as? ProductVariant else { return }
 	}
     
     
@@ -150,7 +174,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         // Price Button
-        if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
+        if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.price {
             cell.priceButton?.isHidden = false
             cell.priceButton?.setTitle(price, for: .normal)
             cell.buy = { [weak self] in

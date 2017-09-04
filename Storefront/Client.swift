@@ -28,10 +28,16 @@ import Foundation
 import Buy
 import Pay
 
+extension Notification.Name {
+    public static let productsFetched = Notification.Name(rawValue: "productsFetched")
+}
+
 public final class Client {
     
     static let shopDomain = "more2life-foundation.myshopify.com"
     static let apiKey     = "a6b7e9ddb238920dde5e5223a9466054"
+    
+    public var products: [String : ProductViewModel] = [:]
     
     public static let shared = Client()
     
@@ -42,6 +48,8 @@ public final class Client {
     //
     private init() {
         self.client.cachePolicy = .cacheFirst(expireIn: 3600)
+        
+        importProducts()
     }
     
     @discardableResult
@@ -262,6 +270,30 @@ public final class Client {
         }
         
         task.resume()
+    }
+}
+
+extension Client {
+    public func importProducts(completion: @escaping () -> () = { }) {
+        let group = DispatchGroup()
+        group.enter()
+        fetchCollections(limit: 1000) { collections in
+            for collection in collections?.items ?? [] {
+                group.enter()
+                self.fetchProducts(in: collection, limit: 1000) { products in
+                    for product in products?.items ?? [] {
+                        self.products[product.id] = product
+                    }
+                    group.leave()
+                }
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            NotificationCenter.default.post(name: .productsFetched, object: nil)
+            completion()
+        }
     }
 }
 

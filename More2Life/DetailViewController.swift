@@ -66,7 +66,7 @@ class DetailViewController: UIViewController, FeedDetailing {
             applePayButton.addTarget(self, action: #selector(applePayTapped), for: .touchUpInside)
             actionStackView?.insertArrangedSubview(applePayButton, at: 0)
             
-            if let price = feedItem.formattedPrice {
+            if let price = feedItem.price {
                 priceView?.isHidden = false
                 priceLabel?.text = price
             }
@@ -90,7 +90,7 @@ class DetailViewController: UIViewController, FeedDetailing {
     
     @objc
     private func applePayTapped() {
-        guard let feedItem = feedItem as? ListingFeedItem, let price = feedItem.product?.price else { return }
+        guard let feedItem = feedItem as? ListingFeedItem else { return }
         
     }
     

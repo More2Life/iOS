@@ -28,13 +28,13 @@ import Buy
 
 public struct PageableArray<T: ViewModel> {
     
-    private(set) var items: [T]
+    public private(set) var items: [T]
     
-    var hasNextPage: Bool {
+    public var hasNextPage: Bool {
         return pageInfo.hasNextPage
     }
     
-    var hasPreviousPage: Bool {
+    public var hasPreviousPage: Bool {
         return pageInfo.hasPreviousPage
     }
     

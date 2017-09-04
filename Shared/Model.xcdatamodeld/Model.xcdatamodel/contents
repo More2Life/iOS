@@ -16,20 +16,7 @@
         <attribute name="type" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ListingFeedItem" representedClassName="ListingFeedItem" parentEntity="FeedItem" syncable="YES">
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="feedItem" inverseEntity="Product" syncable="YES"/>
-    </entity>
-    <entity name="Product" representedClassName="Product" syncable="YES">
-        <attribute name="identifier" attributeType="String" syncable="YES"/>
-        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="feedItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListingFeedItem" inverseName="product" inverseEntity="ListingFeedItem" syncable="YES"/>
-        <relationship name="variants" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ProductVariant" inverseName="product" inverseEntity="ProductVariant" syncable="YES"/>
-    </entity>
-    <entity name="ProductVariant" representedClassName="ProductVariant" syncable="YES">
-        <attribute name="identifier" attributeType="String" syncable="YES"/>
-        <attribute name="inventoryQuantity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
-        <attribute name="vendorID" attributeType="String" syncable="YES"/>
-        <relationship name="product" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="variants" inverseEntity="Product" syncable="YES"/>
+        <attribute name="productID" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StoryFeedItem" representedClassName="StoryFeedItem" parentEntity="FeedItem" syncable="YES">
         <attribute name="publishDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -40,8 +27,6 @@
         <element name="EventFeedItem" positionX="-315" positionY="27" width="128" height="90"/>
         <element name="FeedItem" positionX="-164" positionY="-234" width="128" height="165"/>
         <element name="ListingFeedItem" positionX="25" positionY="27" width="128" height="60"/>
-        <element name="Product" positionX="79" positionY="174" width="128" height="103"/>
         <element name="StoryFeedItem" positionX="-144" positionY="27" width="128" height="90"/>
-        <element name="ProductVariant" positionX="268" positionY="183" width="128" height="118"/>
     </elements>
 </model>
