@@ -13,16 +13,22 @@ import SafariServices
 
 protocol ApplePaying: PaySessionDelegate {
     var paySession: PaySession? { get set }
+    var checkoutID: String? { get set }
+    var paymentComplete: () -> () { get }
 }
 
 extension ApplePaying where Self: UIViewController {
     func openSafariFor(_ checkout: CheckoutViewModel) {
-        let safari                  = SFSafariViewController(url: checkout.webURL)
+        checkoutID = checkout.id
+        
+        let safari = SFSafariViewController(url: checkout.webURL)
         safari.navigationItem.title = "Checkout"
-        self.navigationController?.show(safari, sender: self)
+        present(safari, animated: true, completion: nil)
     }
     
     func authorizePaymentWith(_ checkout: CheckoutViewModel) {
+        checkoutID = checkout.id
+        
         let initiatePayment: (_ currencyCode: String, _ countryCode: String) -> () = { currencyCode, countryCode in
             let payCurrency = PayCurrency(currencyCode: currencyCode, countryCode: countryCode)
             let payItems    = checkout.lineItems.map { item in
@@ -191,7 +197,7 @@ extension ApplePaying where Self: UIViewController {
     /// - parameters:
     ///     - paySession: The session that invoked the callback.
     ///
-    func paySessionDidFinish(_ paySession: Pay.PaySession){
-        dismiss(animated: true, completion: nil)
+    func paySessionDidFinish(_ paySession: Pay.PaySession) {
+        paymentComplete()
     }
 }

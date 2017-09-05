@@ -156,10 +156,11 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel?.text = feedItem.title
         cell.typeLabel?.text = feedItem.type.localizedDescription.uppercased()
         cell.typeColorView?.backgroundColor = feedItem.type.color
+        cell.priceButton?.borderColor = feedItem.buttonOverlayColor
         
         // Preview Image
         if let imageURL = feedItem.previewImageURL {
-            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak cell] image, request in
+            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.backgroundContext) { [weak cell] image, request in
                 guard request?.url?.absoluteString == cell?.request?.request?.url?.absoluteString else { return }
                 
                 if Thread.isMainThread {
@@ -269,5 +270,11 @@ extension FeedItemType {
     
     var reuseIdentifier: String {
         return String(describing: FeedItemTableViewCell.self)
+    }
+}
+
+extension FeedItem {
+    var buttonOverlayColor: UIColor {
+        return hasDarkPreviewImage ? .white : .lightGray
     }
 }

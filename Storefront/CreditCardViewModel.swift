@@ -27,11 +27,11 @@
 import Foundation
 import Buy
 
-final class CreditCardViewModel: ViewModel {
+public final class CreditCardViewModel: ViewModel {
     
-    typealias ModelType = Storefront.CreditCard
+    public typealias ModelType = Storefront.CreditCard
     
-    let model:  ModelType
+    public let model:  ModelType
     
     let firstName:    String?
     let lastName:     String?
@@ -47,7 +47,7 @@ final class CreditCardViewModel: ViewModel {
     // ----------------------------------
     //  MARK: - Init -
     //
-    required init(from model: ModelType) {
+    public required init(from model: ModelType) {
         self.model        = model
         
         self.firstName    = model.firstName

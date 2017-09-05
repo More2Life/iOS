@@ -261,4 +261,18 @@ final class ClientQuery {
             }
         }
     }
+    
+    static func queryForCompletedOrder(for checkoutID: String) -> Storefront.QueryRootQuery {
+        return Storefront.buildQuery { $0
+            .node(id: GraphQL.ID(rawValue: checkoutID)) { $0
+                .onCheckout { $0
+                    .order { $0
+                        .id()
+                        .orderNumber()
+                        .totalPrice()
+                    }
+                }
+            }
+        }
+    }
 }

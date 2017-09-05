@@ -315,6 +315,23 @@ public final class Client {
         
         task.resume()
     }
+    
+    public func fetchCompletedOrder(for checkoutID: String, completion: @escaping (_ orderID: String?) -> Void) {
+
+        let retry = Graph.RetryHandler<Storefront.QueryRoot>(endurance: .finite(30)) { (response, error) -> Bool in
+            return (response?.node as? Storefront.Checkout)?.order == nil
+        }
+        
+        let query = ClientQuery.queryForCompletedOrder(for: checkoutID)
+        let task  = self.client.queryGraphWith(query, retryHandler: retry) { response, error in
+            let checkout = (response?.node as? Storefront.Checkout)
+            let orderID  = checkout?.order?.id
+            
+            completion(orderID?.rawValue)
+        }
+        
+        task.resume()
+    }
 }
 
 extension Client {

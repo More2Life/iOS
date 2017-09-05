@@ -9,29 +9,28 @@
 import Foundation
 import UIKit
 
-@IBDesignable class PriceButton: UIButton {
+@IBDesignable public class PriceButton: UIButton {
 	
-
- 
-	@IBInspectable var cornerRadius: CGFloat = 10.0 {
-		didSet{
-			setupView()
-		}
-	}
-	
-	private func setupView(){
-		
-		layer.cornerRadius = cornerRadius
+	private func setupView() {
 		layer.borderWidth = 2
-		layer.borderColor = (UIColor.red).cgColor as CGColor
-		self.setTitleColor(UIColor.red, for: .normal)
-		
-		self.setNeedsDisplay()
-		
+		layer.borderColor = borderColor?.cgColor ?? UIColor.lightGray.cgColor
+		setTitleColor(borderColor ?? UIColor.lightGray, for: .normal)
+		titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+		setNeedsDisplay()
 	}
 
 	
-	override func awakeFromNib() {
+	override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        cornerRadius = 10
 		setupView()
 	}
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setupView()
+    }
 }
