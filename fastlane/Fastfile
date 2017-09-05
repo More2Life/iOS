@@ -132,11 +132,14 @@ platform :ios do
   desc "Create provisioning profiles"
   private_lane :provisioning do |options|    
     match(type: options[:type], app_identifier: "com.coachkalani.More2Life", force_for_new_devices: true)
+    match(type: options[:type], app_identifier: "com.coachkalani.Stickers.StickerPackExtension", force_for_new_devices: true)
+    
   end
 
   desc "🐕 Fetch provisioning 🐕"
   private_lane :fetchProvisioning do |options|
-    match(type: options[:type], app_identifier: "com.coachkalani.More2Life", readonly: false)
+    match(type: options[:type], app_identifier: "com.coachkalani.More2Life", readonly: true)
+    match(type: options[:type], app_identifier: "com.coachkalani.Stickers.StickerPackExtension", readonly: true)
   end
 
   # You can define as many lanes as you want

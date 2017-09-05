@@ -1,0 +1,17 @@
+{
+  "stickers" : [
+    {
+      "filename" : "More2Life Word Logo.sticker"
+    },
+    {
+      "filename" : "More2Life Circle Logo.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  }
+}
