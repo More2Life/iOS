@@ -39,6 +39,7 @@ public final class ProductViewModel: ViewModel {
     public let summary:  String
     public let price:    String
     public let handle:   String
+    public let tags:     [String]
     public let images:   PageableArray<ImageViewModel>
     public let variants: PageableArray<VariantViewModel>
     
@@ -71,6 +72,7 @@ public final class ProductViewModel: ViewModel {
         )
         
         self.handle   = model.node.handle
+        self.tags     = model.node.tags
     }
 }
 

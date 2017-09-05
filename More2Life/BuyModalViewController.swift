@@ -45,7 +45,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     var mode: Mode? {
         didSet {
-            guard let mode = mode, case .action(let feedItem) = mode, let listingFeedItem = feedItem as? ListingFeedItem, let product = Client.shared.products[listingFeedItem.productID] else { return }
+            guard let mode = mode, case .action(let feedItem) = mode, let listingFeedItem = feedItem as? ListingFeedItem, let product = listingFeedItem.product else { return }
             
             self.product = product
         }

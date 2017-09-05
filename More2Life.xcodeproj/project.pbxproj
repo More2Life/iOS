@@ -21,6 +21,7 @@
 		0460074B1F5E352D00A8724F /* StickerPackExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0460074A1F5E352D00A8724F /* StickerPackExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0460074F1F5E352D00A8724F /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 0460074E1F5E352D00A8724F /* Stickers.xcstickers */; };
 		046007501F5E352D00A8724F /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 0460074E1F5E352D00A8724F /* Stickers.xcstickers */; };
+		0460075D1F5E474B00A8724F /* StickerPackExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0460074A1F5E352D00A8724F /* StickerPackExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04638E821F2CFC5800E746A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04638E811F2CFC5800E746A8 /* AppDelegate.swift */; };
 		04638E841F2CFC5800E746A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04638E831F2CFC5800E746A8 /* FeedViewController.swift */; };
 		04638E861F2CFC5800E746A8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04638E851F2CFC5800E746A8 /* SecondViewController.swift */; };
@@ -73,7 +74,7 @@
 		0485B6771F5BACC7002E599F /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B6761F5BACC7002E599F /* Currency.swift */; };
 		0485B6791F5BAE3D002E599F /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B6781F5BAE3D002E599F /* CartController.swift */; };
 		0485B67B1F5BB29D002E599F /* ApplePaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B67A1F5BB29D002E599F /* ApplePaying.swift */; };
-		0485B6801F5DA3C7002E599F /* ListingItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B67F1F5DA3C7002E599F /* ListingItemExtension.swift */; };
+		0485B6801F5DA3C7002E599F /* FeedItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B67F1F5DA3C7002E599F /* FeedItemExtension.swift */; };
 		0485B6831F5DAA6C002E599F /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485B6821F5DAA6C002E599F /* StoryboardExtension.swift */; };
 		0485B6841F5DFDB9002E599F /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA8A1F56098A00112A4C /* MainButton.swift */; };
 		0485B6851F5DFDC2002E599F /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20081061F561EB100F43D97 /* PriceButton.swift */; };
@@ -118,6 +119,13 @@
 			remoteInfo = Shared;
 		};
 		0460074C1F5E352D00A8724F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04638E761F2CFC5700E746A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 046007491F5E352D00A8724F;
+			remoteInfo = StickerPackExtension;
+		};
+		0460075E1F5E474B00A8724F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04638E761F2CFC5700E746A8 /* Project object */;
 			proxyType = 1;
@@ -176,6 +184,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0460074B1F5E352D00A8724F /* StickerPackExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046007601F5E474B00A8724F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0460075D1F5E474B00A8724F /* StickerPackExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +288,7 @@
 		0485B6761F5BACC7002E599F /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0485B6781F5BAE3D002E599F /* CartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartController.swift; sourceTree = "<group>"; };
 		0485B67A1F5BB29D002E599F /* ApplePaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePaying.swift; sourceTree = "<group>"; };
-		0485B67F1F5DA3C7002E599F /* ListingItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingItemExtension.swift; sourceTree = "<group>"; };
+		0485B67F1F5DA3C7002E599F /* FeedItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemExtension.swift; sourceTree = "<group>"; };
 		0485B6821F5DAA6C002E599F /* StoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardExtension.swift; sourceTree = "<group>"; };
 		049C7AED1F3F5402009BAD81 /* StoryFeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryFeedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		049C7AEE1F3F5402009BAD81 /* StoryFeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StoryFeedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -428,7 +447,7 @@
 				04638E871F2CFC5800E746A8 /* Main.storyboard */,
 				0485B67C1F5BB2A4002E599F /* Resources */,
 				0485B67A1F5BB29D002E599F /* ApplePaying.swift */,
-				0485B67F1F5DA3C7002E599F /* ListingItemExtension.swift */,
+				0485B67F1F5DA3C7002E599F /* FeedItemExtension.swift */,
 			);
 			path = More2Life;
 			sourceTree = "<group>";
@@ -763,6 +782,7 @@
 				04638E7B1F2CFC5800E746A8 /* Frameworks */,
 				04638E7C1F2CFC5800E746A8 /* Resources */,
 				04638EE91F2CFD0F00E746A8 /* Embed Frameworks */,
+				046007601F5E474B00A8724F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -770,6 +790,7 @@
 				04638EE31F2CFD0F00E746A8 /* PBXTargetDependency */,
 				044194641F2D092500AFB904 /* PBXTargetDependency */,
 				0485B62D1F5BAA21002E599F /* PBXTargetDependency */,
+				0460075F1F5E474B00A8724F /* PBXTargetDependency */,
 			);
 			name = More2Life;
 			productName = More2Life;
@@ -1088,7 +1109,7 @@
 				04638E821F2CFC5800E746A8 /* AppDelegate.swift in Sources */,
 				E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */,
 				049C7B021F3F9D61009BAD81 /* DetailViewController.swift in Sources */,
-				0485B6801F5DA3C7002E599F /* ListingItemExtension.swift in Sources */,
+				0485B6801F5DA3C7002E599F /* FeedItemExtension.swift in Sources */,
 				04638E841F2CFC5800E746A8 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1184,6 +1205,11 @@
 			isa = PBXTargetDependency;
 			target = 046007491F5E352D00A8724F /* StickerPackExtension */;
 			targetProxy = 0460074C1F5E352D00A8724F /* PBXContainerItemProxy */;
+		};
+		0460075F1F5E474B00A8724F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 046007491F5E352D00A8724F /* StickerPackExtension */;
+			targetProxy = 0460075E1F5E474B00A8724F /* PBXContainerItemProxy */;
 		};
 		04638E961F2CFC5800E746A8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1344,10 +1370,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = StickerPackExtension/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.Stickers.StickerPackExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "60494b92-4597-406c-a3bc-059e509c4d55";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.Stickers.StickerPackExtension";
+				PROVISIONING_PROFILE = "58af783a-a8d8-4e35-b905-a5f943d0867c";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life.StickerPackExtension";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1359,10 +1385,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = StickerPackExtension/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.Stickers.StickerPackExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "39f2d85b-c33b-4782-872f-eb3050024c90";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.Stickers.StickerPackExtension";
+				PROVISIONING_PROFILE = "a529b407-1756-48e4-8efd-0dd5aa30fb2e";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life.StickerPackExtension";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

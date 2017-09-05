@@ -82,9 +82,6 @@ public class FeedItem: NSManagedObject {
         }
     }
     
-    public var hasDarkPreviewImage = false
-    
-    
     /// Imports feed items from the server
     ///
     /// - Parameters:

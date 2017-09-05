@@ -272,9 +272,3 @@ extension FeedItemType {
         return String(describing: FeedItemTableViewCell.self)
     }
 }
-
-extension FeedItem {
-    var buttonOverlayColor: UIColor {
-        return hasDarkPreviewImage ? .white : .lightGray
-    }
-}
