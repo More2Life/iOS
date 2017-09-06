@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Storefront
+import Buy
+
+var paymentSettings: Storefront.PaymentSettings?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Client.shared.fetchPaymentSettings { paymentSettings in
+            More2Life.paymentSettings = paymentSettings
+        }
+        
         return true
     }
 

@@ -36,6 +36,9 @@ let persistentContainer: NSPersistentContainer = {
 }()
 
 public let viewContext = persistentContainer.viewContext
+public var backgroundContext: NSManagedObjectContext {
+    return persistentContainer.newBackgroundContext()
+}
 
 public extension NSManagedObjectContext {
     func persist() {

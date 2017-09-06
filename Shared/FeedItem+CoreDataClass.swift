@@ -11,6 +11,8 @@ import CoreData
 import Services
 import Alamofire
 
+public let localizedDonateString = NSLocalizedString("Donate", comment: "Video type string")
+
 let imageCache = NSCache<NSString, UIImage>()
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
@@ -36,11 +38,24 @@ public enum FeedItemType: String {
     public var localizedCallToActionTitle: String {
         switch self {
         case .story:
-            return NSLocalizedString("Donate", comment: "Video type string")
+            return localizedDonateString
         case .event:
             return NSLocalizedString("Register", comment: "Event type string")
         case .listing:
             return NSLocalizedString("Buy", comment: "Listing type string")
+        case .unknown:
+            return ""
+        }
+    }
+    
+    public var localizedConfirmationTitle: String {
+        switch self {
+        case .story:
+            return localizedDonateString
+        case .event:
+            return NSLocalizedString("Register", comment: "Event type string")
+        case .listing:
+            return NSLocalizedString("Checkout", comment: "Listing type string")
         case .unknown:
             return ""
         }
@@ -66,7 +81,6 @@ public class FeedItem: NSManagedObject {
             didChangeValue(forKey: FeedItem.typeKey)
         }
     }
-    
     
     /// Imports feed items from the server
     ///

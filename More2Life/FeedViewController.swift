@@ -14,6 +14,8 @@ import MapKit
 import AVFoundation
 import AVKit
 import Pay
+import Storefront
+import SafariServices
 
 protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
@@ -21,6 +23,8 @@ protocol FeedDetailing {
 
 class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
+    
+    var observer: NSObjectProtocol?
 	
 	var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
     
@@ -62,11 +66,34 @@ class FeedViewController: UIViewController {
         tableView?.refreshControl = refreshControl
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        observer = NotificationCenter.default.addObserver(forName: .productsImported, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.tableView?.reloadData()
+        }
+    }
+    
+    deinit {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     func refresh(sender: UIRefreshControl?) {
+        let group = DispatchGroup()
+        
+        group.enter()
         FeedItem.import(in: Shared.viewContext) { _ in
+            group.leave()
+        }
+        
+        group.enter()
+        Client.shared.importProducts() {
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [weak self] in
             sender?.endRefreshing()
+            self?.tableView?.reloadData()
         }
     }
     
@@ -89,18 +116,31 @@ class FeedViewController: UIViewController {
             }
         }
     }
+    
 	@IBAction func buyTapped(_ sender: Any) {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let buyModalViewController = storyboard.instantiateViewController(withIdentifier: "BuyModalViewController")
-		
-		self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
-		
-		buyModalViewController.modalPresentationStyle = .custom
-		buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
-		
-		present(buyModalViewController, animated: true, completion: nil)
-
+        guard let feedItem = sender as? FeedItem else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()        
+        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+        
+        buyModalViewController.modalPresentationStyle = .custom
+        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+        buyModalViewController.mode = .action(feedItem: feedItem)
+        
+        present(buyModalViewController, animated: true, completion: nil)
 	}
+    
+    @IBAction func giveTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
+        self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+        
+        buyModalViewController.modalPresentationStyle = .custom
+        buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+        buyModalViewController.mode = .donate
+        
+        present(buyModalViewController, animated: true, completion: nil)
+    }
 }
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
@@ -116,10 +156,11 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel?.text = feedItem.title
         cell.typeLabel?.text = feedItem.type.localizedDescription.uppercased()
         cell.typeColorView?.backgroundColor = feedItem.type.color
+        cell.priceButton?.borderColor = feedItem.buttonOverlayColor
         
         // Preview Image
         if let imageURL = feedItem.previewImageURL {
-            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak cell] image, request in
+            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.backgroundContext) { [weak cell] image, request in
                 guard request?.url?.absoluteString == cell?.request?.request?.url?.absoluteString else { return }
                 
                 if Thread.isMainThread {
@@ -141,9 +182,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         // Price Button
-        if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.formattedPrice {
-            cell.priceView?.isHidden = false
-            cell.priceButton?.titleLabel?.text = price
+        if let feedItem = feedItem as? ListingFeedItem, let price = feedItem.price {
+            cell.priceButton?.isHidden = false
+            cell.priceButton?.setTitle(price, for: .normal)
+            cell.buy = { [weak self] in
+                self?.buyTapped(feedItem)
+            }
         }
         
         return cell
@@ -165,16 +209,16 @@ class FeedItemTableViewCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel?
     @IBOutlet weak var previewImageView: UIImageView?
     @IBOutlet weak var typeColorView: UIView?
-    @IBOutlet weak var priceView: UIView?
 	@IBOutlet weak var priceButton: PriceButton?
     @IBOutlet weak var playButton: UIButton?
     
     var playVideo: () -> () = { _ in }
+    var buy: () -> () = { _ in }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        priceView?.isHidden = true
+        priceButton?.isHidden = true
         playButton?.isHidden = true
     }
     
@@ -193,7 +237,7 @@ class FeedItemTableViewCell: UITableViewCell {
         
         previewImageView?.image = nil
         
-        priceView?.isHidden = true
+        priceButton?.isHidden = true
     
         playButton?.isHidden = true
         playVideo = { _ in }
@@ -203,6 +247,10 @@ class FeedItemTableViewCell: UITableViewCell {
     
     @IBAction func playTapped(_ sender: Any) {
         playVideo()
+    }
+    
+    @IBAction func buyTapped(_ sender: Any) {
+        buy()
     }
 }
 

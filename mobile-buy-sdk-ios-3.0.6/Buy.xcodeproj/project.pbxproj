@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		046C92C41F5B4691000BD9BF /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C92C31F5B4691000BD9BF /* GraphQL.swift */; };
 		9A0C7FCD1EA6631B0020F187 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7FCC1EA6631B0020F187 /* Models.swift */; };
 		9A0C7FD11EA669C80020F187 /* PayDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7FD01EA669C80020F187 /* PayDiscount.swift */; };
 		9A0C7FD31EA66DF70020F187 /* PayDiscountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7FD21EA66DF70020F187 /* PayDiscountTests.swift */; };
@@ -197,7 +198,6 @@
 		9AF1C1881F13B45C0064AEA0 /* PaymentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1C1851F13ACCF0064AEA0 /* PaymentSettings.swift */; };
 		9AF1C1891F13B45E0064AEA0 /* ProductCollectionSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1C1841F13ACCF0064AEA0 /* ProductCollectionSortKeys.swift */; };
 		9AFA38EF1E64850A0056C5AA /* Buy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEF60F31E5F42D90067FA90 /* Buy.framework */; };
-		9AFA3B6D1E6D9A5E0056C5AA /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA3B6C1E6D9A5E0056C5AA /* GraphQL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +218,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		046C92C31F5B4691000BD9BF /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphQL.swift; path = "Dependencies/Swift Gen/GraphQL.swift"; sourceTree = SOURCE_ROOT; };
 		9A0C7FCC1EA6631B0020F187 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		9A0C7FD01EA669C80020F187 /* PayDiscount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayDiscount.swift; sourceTree = "<group>"; };
 		9A0C7FD21EA66DF70020F187 /* PayDiscountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayDiscountTests.swift; sourceTree = "<group>"; };
@@ -399,7 +400,6 @@
 		9AF1C1861F13ACCF0064AEA0 /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		9AFA38EA1E64850A0056C5AA /* BuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AFA38EE1E64850A0056C5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AFA3B6C1E6D9A5E0056C5AA /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -779,7 +779,7 @@
 		9AFA3B6B1E6D9A5E0056C5AA /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				9AFA3B6C1E6D9A5E0056C5AA /* GraphQL.swift */,
+				046C92C31F5B4691000BD9BF /* GraphQL.swift */,
 			);
 			name = Support;
 			path = "Dependencies/Swift Gen/support/Sources";
@@ -1089,7 +1089,6 @@
 				9A0C80611EAA51C50020F187 /* CheckoutCompleteWithTokenizedPaymentPayload.swift in Sources */,
 				9AA416D11EE095B20060029B /* BlogConnection.swift in Sources */,
 				9A0C80771EAA51C50020F187 /* CreditCard.swift in Sources */,
-				9AFA3B6D1E6D9A5E0056C5AA /* GraphQL.swift in Sources */,
 				9A0C808E1EAA51C50020F187 /* Image.swift in Sources */,
 				9A0C80831EAA51C50020F187 /* CustomerAddressCreatePayload.swift in Sources */,
 				9A0C80A11EAA51C50020F187 /* PageInfo.swift in Sources */,
@@ -1130,6 +1129,7 @@
 				9AF1C1871F13B4530064AEA0 /* CountryCode.swift in Sources */,
 				9A0C80921EAA51C50020F187 /* MailingAddressConnection.swift in Sources */,
 				9A0C80901EAA51C50020F187 /* ImageEdge.swift in Sources */,
+				046C92C41F5B4691000BD9BF /* GraphQL.swift in Sources */,
 				9AA416C81EE095AA0060029B /* ArticleAuthor.swift in Sources */,
 				9A0C80AC1EAA51C50020F187 /* SelectedOption.swift in Sources */,
 				9A0C809E1EAA51C50020F187 /* OrderLineItemConnection.swift in Sources */,

@@ -8,10 +8,8 @@
 
 import Foundation
 import UIKit
-import Shared
 
-
-@IBDesignable class MainButton: UIButton {
+@IBDesignable public class MainButton: UIButton {
 	
 	@IBInspectable var startColor: UIColor = Color.blueDark.uiColor {
 		didSet{
@@ -24,14 +22,8 @@ import Shared
 			setupView()
 		}
 	}
- 
-	@IBInspectable var cornerRadius: CGFloat = 10.0 {
-		didSet{
-			setupView()
-		}
-	}
 	
-	private func setupView(){
+	private func setupView() {
 		
 		let colors:Array = [startColor.cgColor, endColor.cgColor]
 		gradientLayer.colors = colors
@@ -47,11 +39,12 @@ import Shared
 		return layer as! CAGradientLayer
 	}
 	
-	override class var layerClass: AnyClass {
+	override public class var layerClass: AnyClass {
 		return CAGradientLayer.self
 	}
 	
-	override func awakeFromNib() {
+	override public func awakeFromNib() {
+        super.awakeFromNib()
 		setupView()
 	}
 }
