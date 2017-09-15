@@ -160,7 +160,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Preview Image
         if let imageURL = feedItem.previewImageURL {
-            cell.request = FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.backgroundContext) { [weak cell] image, request in
+            cell.request = FeedItem.previewImage(with: imageURL, for: feedItem, in: Shared.backgroundContext) { [weak cell] image, request in
                 guard request?.url?.absoluteString == cell?.request?.request?.url?.absoluteString else { return }
                 
                 if Thread.isMainThread {

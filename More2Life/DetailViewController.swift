@@ -18,9 +18,6 @@ class DetailViewController: UIViewController, FeedDetailing {
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var previewImageView: UIImageView?
-    @IBOutlet weak var priceView: UIView?
-    @IBOutlet weak var priceLabel: UILabel?
     @IBOutlet weak var playButton: UIButton?
     
     @IBOutlet weak var actionStackView: UIStackView?
@@ -36,35 +33,29 @@ class DetailViewController: UIViewController, FeedDetailing {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = feedItem?.type.localizedDescription
-        titleLabel?.text = feedItem?.title
-        descriptionLabel?.text = feedItem?.itemDescription
+        title = feedItem?.title
+        if let data = (feedItem?.itemDescription ?? "").data(using: .utf8) {
+            do {
+                let attributedString = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+                
+                descriptionLabel?.text = attributedString.string
+            } catch {
+                descriptionLabel?.text = feedItem?.itemDescription
+            }
+        } else {
+            descriptionLabel?.text = feedItem?.itemDescription
+        }
         actionButton?.setTitle(feedItem?.type.localizedCallToActionTitle, for: .normal)
-        priceView?.isHidden = true
         playButton?.isHidden = true
         
         guard let feedItem = feedItem else { return }
-        
-        // Preview image
-        if let imageURL = feedItem.previewImageURL {
-            FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak self] image, request in
-                if Thread.isMainThread {
-                    self?.previewImageView?.image = image
-                } else {
-                    DispatchQueue.main.async {
-                        self?.previewImageView?.image = image
-                    }
-                }
-            }
-        }
         
         switch feedItem {
         case _ as EventFeedItem:
             break
         case let feedItem as ListingFeedItem:
             if let price = feedItem.price {
-                priceView?.isHidden = false
-                priceLabel?.text = price
+                actionButton?.setTitle(price, for: .normal)
             }
         case let feedItem as StoryFeedItem:
             if feedItem.videoURL != nil {
@@ -119,6 +110,17 @@ class DetailViewController: UIViewController, FeedDetailing {
             let player = AVPlayer(url: url)
             player.play()
             viewController.player = player
+        case let viewController as ImagePageViewController:
+            guard let feedItem = feedItem else { return }
+            
+            switch feedItem {
+            case let feedItem as ListingFeedItem:
+                guard let product = feedItem.product else { break }
+                viewController.imageURLs = product.images.items.map { $0.url }
+            default:
+                guard let urlString = feedItem.previewImageURL, let url = URL(string: urlString) else { break }
+                viewController.imageURLs = [url]
+            }
         default:
             break
         }

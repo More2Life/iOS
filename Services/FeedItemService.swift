@@ -9,11 +9,11 @@
 import Foundation
 import Alamofire
 
-#if DEBUG
+//#if DEBUG
     let host = "m2l-server-dev.herokuapp.com"
-#else
-    let host = "m2l-server.herokuapp.com"
-#endif
+//#else
+//    let host = "m2l-server.herokuapp.com"
+//#endif
 
 public final class FeedItemService {
     

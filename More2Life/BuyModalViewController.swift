@@ -25,7 +25,6 @@ class BuyModalViewController: UIViewController, ApplePaying {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var variantPicker: UIPickerView!
-    @IBOutlet weak var priceLabel: UILabel!
     
     var paySession: PaySession?
     var checkoutID: String?
@@ -59,7 +58,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     fileprivate var variant: VariantViewModel? {
         didSet {
-            priceLabel?.text = variant?.formattedPrice
+            actionButton?.setTitle(variant?.formattedPrice, for: .normal)
         }
     }
     
@@ -82,7 +81,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
             
             // Preview image
             if let imageURL = feedItem.previewImageURL {
-                FeedItem.previewImage(with: imageURL as NSString, for: feedItem, in: Shared.viewContext) { [weak self] image, request in
+                FeedItem.previewImage(with: imageURL, for: feedItem, in: Shared.viewContext) { [weak self] image, request in
                     if Thread.isMainThread {
                         self?.productImageView?.image = image
                     } else {
@@ -94,7 +93,12 @@ class BuyModalViewController: UIViewController, ApplePaying {
             }
             
             addApplePayButton(with: feedItem.applePayButtonType)
-            actionButton?.setTitle(feedItem.type.localizedConfirmationTitle, for: .normal)
+            
+            if let feedItem = feedItem as? ListingFeedItem {
+                actionButton?.setTitle(feedItem.price, for: .normal)
+            } else {
+                actionButton?.setTitle(feedItem.type.localizedConfirmationTitle, for: .normal)
+            }
         }
     }
     
@@ -142,9 +146,12 @@ class BuyModalViewController: UIViewController, ApplePaying {
         Client.shared.fetchCompletedOrder(for: checkoutID) { [weak self] orderID in
             guard orderID != nil else { return }
             DispatchQueue.main.async {
-                self?.dismiss(animated: true, completion: nil)
+                let alert = UIAlertController(title: NSLocalizedString("Thanks for helping the cause!", comment: "Thanks for helping the cause!"), message: NSLocalizedString("Check your email for order details.", comment: "Check your email for order details."), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Okay"), style: .default, handler: { _ in
+                    self?.dismiss(animated: true, completion: nil)
+                }))
                 
-                // TODO: Tell the user thanks?
+                self?.present(alert, animated: true, completion: nil)
             }
         }
     }

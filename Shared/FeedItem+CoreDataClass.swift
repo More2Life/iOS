@@ -13,7 +13,6 @@ import Alamofire
 
 public let localizedDonateString = NSLocalizedString("Donate", comment: "Video type string")
 
-let imageCache = NSCache<NSString, UIImage>()
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
 public enum FeedItemType: String {
@@ -200,7 +199,7 @@ public class FeedItem: NSManagedObject {
     ///   - completion: returns the image and the request
     /// - Returns: The request made to the server for the image.
     @discardableResult
-    public static func previewImage(with urlString: NSString, for feedItem: FeedItem, in context: NSManagedObjectContext, completion: @escaping (_ image: UIImage?, _ request: URLRequest?) -> ()) -> DataRequest? {
+    public static func previewImage(with urlString: String, for feedItem: FeedItem, in context: NSManagedObjectContext, completion: @escaping (_ image: UIImage?, _ request: URLRequest?) -> ()) -> DataRequest? {
         if let image = imageCache.object(forKey: urlString as NSString) {
             // Get image out of memory
             completion(image, nil)
@@ -212,26 +211,8 @@ public class FeedItem: NSManagedObject {
             return nil
         } else {
             // Try to get image from the network
-            return Alamofire.request(urlString as String).validate(contentType: ["image/*"]).response { response in
-                var image: UIImage?
-                defer {
-                    completion(image, response.request)
-                }
-                
-                guard response.error == nil, let data = response.data, let previewImage = UIImage(data: data) else {
-                    /*
-                     If the cell went off-screen before the image was downloaded, we cancel it and
-                     an NSURLErrorDomain (-999: cancelled) is returned. This is a normal behavior.
-                     */
-                    if let error = response.error {
-                        print("Error fetching image in feed cell \(error) for \(urlString)")
-                    }
-                    return
-                }
-                
-                image = previewImage
-                
-                imageCache.setObject(previewImage, forKey: urlString as NSString)
+            return UIImage.fetch(with: urlString) { image, request in
+                guard let image = image, let data = UIImagePNGRepresentation(image) else { return }
                 context.perform {
                     feedItem.previewImage = data as NSData
                     context.persist()
