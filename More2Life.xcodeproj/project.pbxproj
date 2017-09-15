@@ -91,6 +91,9 @@
 		04C75C251F45E780005DFC3F /* Pay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C75C241F45E780005DFC3F /* Pay.framework */; };
 		04C75C261F45E780005DFC3F /* Pay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04C75C241F45E780005DFC3F /* Pay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04D074E11F2D0346007E20D6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D074E01F2D0346007E20D6 /* Alamofire.framework */; };
+		04E441D71F6C15FA0038E2BD /* ImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E441D61F6C15FA0038E2BD /* ImagePageViewController.swift */; };
+		04E441D91F6C17AD0038E2BD /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E441D81F6C17AD0038E2BD /* ImageViewController.swift */; };
+		04E441DB1F6C18E70038E2BD /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E441DA1F6C18E70038E2BD /* UIImageExtension.swift */; };
 		E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */; };
 		E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */; };
 		E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA881F54C66900112A4C /* BuyModalViewController.swift */; };
@@ -302,6 +305,9 @@
 		049C7B051F3FBF12009BAD81 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		04C75C241F45E780005DFC3F /* Pay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D074E01F2D0346007E20D6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E441D61F6C15FA0038E2BD /* ImagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageViewController.swift; sourceTree = "<group>"; };
+		04E441D81F6C17AD0038E2BD /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		04E441DA1F6C18E70038E2BD /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E20081061F561EB100F43D97 /* PriceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PriceButton.swift; path = ../More2Life/PriceButton.swift; sourceTree = "<group>"; };
 		E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -444,6 +450,8 @@
 				049C7B011F3F9D61009BAD81 /* DetailViewController.swift */,
 				04638E851F2CFC5800E746A8 /* SecondViewController.swift */,
 				E27BDA881F54C66900112A4C /* BuyModalViewController.swift */,
+				04E441D61F6C15FA0038E2BD /* ImagePageViewController.swift */,
+				04E441D81F6C17AD0038E2BD /* ImageViewController.swift */,
 				04638E871F2CFC5800E746A8 /* Main.storyboard */,
 				0485B67C1F5BB2A4002E599F /* Resources */,
 				0485B67A1F5BB29D002E599F /* ApplePaying.swift */,
@@ -629,6 +637,7 @@
 				049C7B051F3FBF12009BAD81 /* Color.swift */,
 				E27BDA8A1F56098A00112A4C /* MainButton.swift */,
 				E20081061F561EB100F43D97 /* PriceButton.swift */,
+				04E441DA1F6C18E70038E2BD /* UIImageExtension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -895,7 +904,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = More2Life;
 				TargetAttributes = {
 					0441944F1F2D092500AFB904 = {
@@ -1073,6 +1082,7 @@
 			files = (
 				049C7AEF1F3F5402009BAD81 /* StoryFeedItem+CoreDataClass.swift in Sources */,
 				049C7AF61F3F58A8009BAD81 /* EventFeedItem+CoreDataProperties.swift in Sources */,
+				04E441DB1F6C18E70038E2BD /* UIImageExtension.swift in Sources */,
 				0441946F1F2D093C00AFB904 /* Model.xcdatamodeld in Sources */,
 				049C7B001F3F701F009BAD81 /* UIViewExtension.swift in Sources */,
 				049C7AF81F3F58A8009BAD81 /* ListingFeedItem+CoreDataProperties.swift in Sources */,
@@ -1105,11 +1115,13 @@
 				E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */,
 				04638E861F2CFC5800E746A8 /* SecondViewController.swift in Sources */,
 				0485B67B1F5BB29D002E599F /* ApplePaying.swift in Sources */,
+				04E441D71F6C15FA0038E2BD /* ImagePageViewController.swift in Sources */,
 				E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */,
 				04638E821F2CFC5800E746A8 /* AppDelegate.swift in Sources */,
 				E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */,
 				049C7B021F3F9D61009BAD81 /* DetailViewController.swift in Sources */,
 				0485B6801F5DA3C7002E599F /* FeedItemExtension.swift in Sources */,
+				04E441D91F6C17AD0038E2BD /* ImageViewController.swift in Sources */,
 				04638E841F2CFC5800E746A8 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1403,7 +1415,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1411,7 +1425,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1454,7 +1472,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1462,7 +1482,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1745,6 +1769,7 @@
 				046007541F5E352D00A8724F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		046007571F5E352D00A8724F /* Build configuration list for PBXNativeTarget "Stickers" */ = {
 			isa = XCConfigurationList;
@@ -1753,6 +1778,7 @@
 				046007521F5E352D00A8724F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04638E791F2CFC5700E746A8 /* Build configuration list for PBXProject "More2Life" */ = {
 			isa = XCConfigurationList;
