@@ -33,8 +33,7 @@ class DetailViewController: UIViewController, FeedDetailing {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = feedItem?.type.localizedDescription
-        titleLabel?.text = feedItem?.title
+        title = feedItem?.title
         if let data = (feedItem?.itemDescription ?? "").data(using: .utf8) {
             do {
                 let attributedString = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
