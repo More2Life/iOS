@@ -11,13 +11,13 @@ import UIKit
 
 @IBDesignable public class MainButton: UIButton {
 	
-	@IBInspectable var startColor: UIColor = Color.blueDark.uiColor {
+	@IBInspectable var startColor: UIColor = Color.darkBlue.uiColor {
 		didSet{
 			setupView()
 		}
 	}
  
-	@IBInspectable var endColor:  UIColor = Color.blueLight.uiColor {
+	@IBInspectable var endColor:  UIColor = Color.lightBlue.uiColor {
 		didSet{
 			setupView()
 		}

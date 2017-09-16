@@ -155,7 +155,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.titleLabel?.text = feedItem.title
         cell.typeLabel?.text = feedItem.type.localizedDescription.uppercased()
-        cell.typeColorView?.backgroundColor = feedItem.type.color
+		cell.typeLabel?.textColor = feedItem.type.titleColor
+        cell.typeColorView?.backgroundColor = feedItem.type.backgroundColor
         cell.priceButton?.borderColor = feedItem.buttonOverlayColor
         
         // Preview Image
@@ -255,18 +256,31 @@ class FeedItemTableViewCell: UITableViewCell {
 }
 
 extension FeedItemType {
-    var color: UIColor {
+    var backgroundColor: UIColor {
         switch self {
         case .story:
-            return Color.purple.uiColor
+            return Color.lightPurple.uiColor
         case .listing:
-            return Color.red.uiColor
+            return Color.lightGreen.uiColor
         case .event:
-            return Color.yellow.uiColor
+            return Color.lightRed.uiColor
         case .unknown:
             return .gray
         }
     }
+	
+	var titleColor: UIColor {
+		switch self {
+		case .story:
+			return Color.darkPurple.uiColor
+		case .listing:
+			return Color.darkGreen.uiColor
+		case .event:
+			return Color.darkRed.uiColor
+		case .unknown:
+			return .gray
+		}
+	}
     
     var reuseIdentifier: String {
         return String(describing: FeedItemTableViewCell.self)

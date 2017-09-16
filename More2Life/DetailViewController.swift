@@ -53,11 +53,7 @@ class DetailViewController: UIViewController, FeedDetailing {
         switch feedItem {
         case _ as EventFeedItem:
             break
-        case let feedItem as ListingFeedItem:
-            if let price = feedItem.price {
-                actionButton?.setTitle(price, for: .normal)
-            }
-        case let feedItem as StoryFeedItem:
+		case let feedItem as StoryFeedItem:
             if feedItem.videoURL != nil {
                 playButton?.isHidden = false
             }

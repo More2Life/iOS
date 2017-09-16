@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Shared
 
 class ImagePageViewController: UIPageViewController {
 
@@ -19,7 +20,7 @@ class ImagePageViewController: UIPageViewController {
         dataSource = self
         
         let appearance = UIPageControl.appearance()
-        appearance.currentPageIndicatorTintColor = .darkGray
+        appearance.currentPageIndicatorTintColor = Color.lightBlue.uiColor
         appearance.pageIndicatorTintColor = #colorLiteral(red: 0.878935039, green: 0.878935039, blue: 0.878935039, alpha: 1)
         
         var viewControllers: [UIViewController] = []
