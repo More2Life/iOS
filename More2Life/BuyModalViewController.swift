@@ -24,7 +24,8 @@ class BuyModalViewController: UIViewController, ApplePaying {
 
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var variantPicker: UIPickerView!
+	@IBOutlet weak var selectionLabel: UILabel!
+	@IBOutlet weak var variantPicker: UIPickerView!
     
     var paySession: PaySession?
     var checkoutID: String?
@@ -59,6 +60,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
     fileprivate var variant: VariantViewModel? {
         didSet {
             actionButton?.setTitle(variant?.formattedPrice, for: .normal)
+			selectionLabel?.text = variant?.title
         }
     }
     
@@ -77,7 +79,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
             addApplePayButton(with: .donate)
             actionButton?.setTitle(localizedDonateString, for: .normal)
         case .action(let feedItem):
-            productNameLabel.text = feedItem.title
+			productNameLabel.text = (feedItem.title ?? "Selection") + ":"
             
             // Preview image
             if let imageURL = feedItem.previewImageURL {
