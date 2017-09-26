@@ -19,7 +19,8 @@ class DetailViewController: UIViewController, FeedDetailing {
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var playButton: UIButton?
-    
+	@IBOutlet weak var priceButton: PriceButton!
+	
     @IBOutlet weak var actionStackView: UIStackView?
     @IBOutlet weak var actionButton: UIButton?
     @IBOutlet weak var actionGradientView: UIView?
@@ -47,6 +48,7 @@ class DetailViewController: UIViewController, FeedDetailing {
         }
         actionButton?.setTitle(feedItem?.type.localizedCallToActionTitle, for: .normal)
         playButton?.isHidden = true
+		priceButton?.isHidden = true
         
         guard let feedItem = feedItem else { return }
         
@@ -57,6 +59,11 @@ class DetailViewController: UIViewController, FeedDetailing {
             if feedItem.videoURL != nil {
                 playButton?.isHidden = false
             }
+		case let feedItem as ListingFeedItem:
+			priceButton?.isHidden = false
+			let price = feedItem.price
+			priceButton?.setTitle(price, for: .normal)
+			priceButton?.borderColor = feedItem.buttonOverlayColor
         default:
             break
         }

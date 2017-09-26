@@ -388,16 +388,31 @@
                                                             <action selector="playTapped:" destination="JjL-uh-jcb" eventType="touchUpInside" id="Sef-FC-fbP"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEE-hd-Ldx" userLabel="Price Button" customClass="PriceButton" customModule="Shared">
+                                                        <rect key="frame" x="8" y="297" width="100" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="C4Y-Kl-o5e"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ya8-a3-fHs"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="actionTapped:" destination="JjL-uh-jcb" eventType="touchUpInside" id="pPz-v2-PVe"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="7gO-In-F1a" firstAttribute="height" secondItem="0Q4-wg-IpX" secondAttribute="height" multiplier="0.5" id="05Y-XG-lr4"/>
+                                                    <constraint firstItem="JEE-hd-Ldx" firstAttribute="bottom" secondItem="0Q4-wg-IpX" secondAttribute="bottom" constant="-48" id="2eZ-bZ-2Zp"/>
                                                     <constraint firstItem="7gO-In-F1a" firstAttribute="centerX" secondItem="0Q4-wg-IpX" secondAttribute="centerX" id="3kn-wn-RKz"/>
                                                     <constraint firstAttribute="height" secondItem="hml-aw-pFF" secondAttribute="width" multiplier="1:1" constant="20" id="6A1-8G-fFL"/>
                                                     <constraint firstItem="0Q4-wg-IpX" firstAttribute="leading" secondItem="hml-aw-pFF" secondAttribute="leading" id="QRf-op-t8C"/>
                                                     <constraint firstAttribute="trailing" secondItem="0Q4-wg-IpX" secondAttribute="trailing" id="bGY-6n-uhT"/>
                                                     <constraint firstAttribute="bottom" secondItem="0Q4-wg-IpX" secondAttribute="bottom" id="bsw-lm-UWd"/>
                                                     <constraint firstItem="0Q4-wg-IpX" firstAttribute="top" secondItem="hml-aw-pFF" secondAttribute="top" id="hIh-Ht-r0h"/>
+                                                    <constraint firstItem="JEE-hd-Ldx" firstAttribute="leading" secondItem="0Q4-wg-IpX" secondAttribute="leading" constant="8" id="o82-4U-L8v"/>
                                                     <constraint firstItem="7gO-In-F1a" firstAttribute="centerY" secondItem="0Q4-wg-IpX" secondAttribute="centerY" id="t8x-Jz-N7b"/>
                                                 </constraints>
                                             </view>
@@ -480,6 +495,7 @@
                         <outlet property="actionStackView" destination="TMq-kv-UsI" id="AL3-2u-mM3"/>
                         <outlet property="descriptionLabel" destination="dDx-7W-mkJ" id="i4a-dq-NBf"/>
                         <outlet property="playButton" destination="7gO-In-F1a" id="t9x-pg-ya9"/>
+                        <outlet property="priceButton" destination="JEE-hd-Ldx" id="hlE-q2-yDz"/>
                         <outlet property="scrollView" destination="Sjr-uW-4wd" id="rNh-7h-PCr"/>
                         <segue destination="dEm-Bu-LFY" kind="presentation" identifier="playVideo" id="5rb-dY-6gm"/>
                     </connections>
@@ -572,7 +588,7 @@
         <image name="play_button" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MDi-ur-b0y"/>
+        <segue reference="5rb-dY-6gm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.086274509799999996" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
 </document>
