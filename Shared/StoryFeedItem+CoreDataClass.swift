@@ -20,7 +20,7 @@ public class StoryFeedItem: FeedItem {
     class func hydrate(_ feedItem: FeedItem?, with json: [String : Any]) {
         guard let feedItem = feedItem as? StoryFeedItem else { return }
         
-        feedItem.previewImageURL = json["previewImageUrl"] as? String
+        feedItem.previewImageURL = json["feedImageUrl"] as? String
         feedItem.videoURL = json["videoUrl"] as? String
         feedItem.views = json["views"] as? Int64 ?? 0
     }

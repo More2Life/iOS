@@ -14,8 +14,8 @@ import UIKit
 	private func setupView() {
 		layer.borderWidth = 2
 		layer.borderColor = borderColor?.cgColor ?? UIColor.lightGray.cgColor
-		setTitleColor(borderColor ?? UIColor.lightGray, for: .normal)
-		titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+		setTitleColor(UIColor .white, for: .normal)
+		layer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
         
 		setNeedsDisplay()
 	}
