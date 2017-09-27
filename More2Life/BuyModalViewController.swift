@@ -79,7 +79,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
             addApplePayButton(with: .donate)
             actionButton?.setTitle(localizedDonateString, for: .normal)
         case .action(let feedItem):
-			productNameLabel.text = (feedItem.title ?? "Selection") + ":"
+			productNameLabel.text = "\(feedItem.title ?? "Selection"):"
             
             // Preview image
             if let imageURL = feedItem.previewImageURL {
