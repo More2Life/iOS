@@ -17,7 +17,6 @@ extension FeedItem {
     }
 
     @NSManaged public var identifier: String?
-    @NSManaged public var index: Int64
     @NSManaged public var isActive: Bool
     @NSManaged public var itemDescription: String?
     @NSManaged public var title: String?

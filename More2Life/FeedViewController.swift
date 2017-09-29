@@ -37,7 +37,7 @@ class FeedViewController: UIViewController {
             
             let fetchRequest: NSFetchRequest<FeedItem> = FeedItem.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == true", #keyPath(FeedItem.isActive))
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(FeedItem.index), ascending: false)]
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(FeedItem.identifier), ascending: false)]
             
             let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Shared.viewContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchedResultsController.delegate = self
