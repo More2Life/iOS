@@ -151,6 +151,7 @@ public class FeedItem: NSManagedObject {
         feedItem?.type = type
         feedItem?.title = title
         feedItem?.itemDescription = description
+		feedItem?.createdAt = ISO8601DateFormatter().date(from:(json["createdAt"] as? String ?? ""))
         feedItem?.isActive = json["isActive"] as? Bool ?? false
         feedItem?.previewImageURL = json["previewImageUrl"] as? String ?? json["imageUrl"] as? String
         

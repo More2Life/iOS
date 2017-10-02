@@ -51,7 +51,7 @@ extension ImagePageViewController: UIPageViewControllerDataSource {
     // MARK: - Page Indicator
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return imageViewControllers.count > 1 ? 0 : -1
+        return imageViewControllers.count > 1 ? imageViewControllers.count : -1
     }
     
     func presentationIndex(for pageViewController: UIPageViewController)-> Int {

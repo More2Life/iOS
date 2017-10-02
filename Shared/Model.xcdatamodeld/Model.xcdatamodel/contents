@@ -6,6 +6,7 @@
         <attribute name="eventURL" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="FeedItem" representedClassName=".FeedItem" isAbstract="YES" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="itemDescription" attributeType="String" syncable="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="EventFeedItem" positionX="-315" positionY="27" width="128" height="90"/>
-        <element name="FeedItem" positionX="-164" positionY="-234" width="128" height="150"/>
+        <element name="FeedItem" positionX="-164" positionY="-234" width="128" height="165"/>
         <element name="ListingFeedItem" positionX="25" positionY="27" width="128" height="60"/>
         <element name="StoryFeedItem" positionX="-144" positionY="27" width="128" height="90"/>
     </elements>

@@ -18,6 +18,7 @@ extension FeedItem {
 
     @NSManaged public var identifier: String?
     @NSManaged public var isActive: Bool
+	@NSManaged public var createdAt: Date?
     @NSManaged public var itemDescription: String?
     @NSManaged public var title: String?
     @NSManaged public var previewImageURL: String?
