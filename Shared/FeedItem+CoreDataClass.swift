@@ -154,7 +154,7 @@ public class FeedItem: NSManagedObject {
         feedItem?.index = index
         feedItem?.itemDescription = description
         feedItem?.isActive = json["isActive"] as? Bool ?? false
-        feedItem?.previewImageURL = json["previewImageUrl"] as? String ?? json["imageUrl"] as? String
+        feedItem?.previewImageURL = json["feedImageUrl"] as? String ?? json["imageUrl"] as? String
         
         switch type {
         case .story:
