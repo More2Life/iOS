@@ -131,7 +131,6 @@ public class FeedItem: NSManagedObject {
     static func feedItem(from json: [String : Any], in context: NSManagedObjectContext) -> FeedItem? {
         guard let identifier = json["_id"] as? String,
             let title = json["title"] as? String,
-            let index = json["index"] as? Int64,
             let description = json["description"] as? String,
             let type = FeedItemType(rawValue: (json["type"] as? String ?? "").lowercased()) else { return nil }
         
@@ -151,10 +150,10 @@ public class FeedItem: NSManagedObject {
         feedItem?.identifier = identifier
         feedItem?.type = type
         feedItem?.title = title
-        feedItem?.index = index
         feedItem?.itemDescription = description
+		feedItem?.createdAt = ISO8601DateFormatter().date(from:(json["createdAt"] as? String ?? ""))
         feedItem?.isActive = json["isActive"] as? Bool ?? false
-        feedItem?.previewImageURL = json["previewImageUrl"] as? String ?? json["imageUrl"] as? String
+        feedItem?.previewImageURL = json["feedImageUrl"] as? String ?? json["imageUrl"] as? String
         
         switch type {
         case .story:
