@@ -190,6 +190,15 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                 self?.buyTapped(feedItem)
             }
         }
+		
+		// Donate Button
+		if let feedItem = feedItem as? DonationFeedItem {
+			cell.priceButton?.isHidden = false
+			cell.priceButton?.setTitle(feedItem.type.localizedCallToActionTitle, for: .normal)
+			cell.buy = { [weak self] in
+				self?.buyTapped(feedItem)
+			}
+		}
         
         return cell
     }
@@ -264,6 +273,8 @@ extension FeedItemType {
             return Color.lightGreen.uiColor
         case .event:
             return Color.lightRed.uiColor
+		case .donation:
+			return Color.lightGreen.uiColor
         case .unknown:
             return .gray
         }
@@ -277,6 +288,8 @@ extension FeedItemType {
 			return Color.darkGreen.uiColor
 		case .event:
 			return Color.darkRed.uiColor
+		case .donation:
+			return Color.darkGreen.uiColor
 		case .unknown:
 			return .gray
 		}
