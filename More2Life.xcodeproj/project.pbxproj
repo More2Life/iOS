@@ -315,8 +315,8 @@
 		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		E27BDA881F54C66900112A4C /* BuyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
 		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = ../More2Life/MainButton.swift; sourceTree = "<group>"; };
-		E2E709E41F9FFE6700AF6A2C /* DonationFeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DonationFeedItem+CoreDataClass.swift"; path = "/Users/bkingsford/Developer/m2l-iOS/Shared/DonationFeedItem+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		E2E709E51F9FFE6800AF6A2C /* DonationFeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DonationFeedItem+CoreDataProperties.swift"; path = "/Users/bkingsford/Developer/m2l-iOS/Shared/DonationFeedItem+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		E2E709E41F9FFE6700AF6A2C /* DonationFeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DonationFeedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E709E51F9FFE6800AF6A2C /* DonationFeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DonationFeedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -47,7 +47,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
         didSet {
             guard let mode = mode, case .action(let feedItem) = mode else { return }
 			
-			var product: ProductViewModel?
+			let product: ProductViewModel?
 			switch feedItem {
 			case let feedItem as ListingFeedItem:
 				product = feedItem.product
