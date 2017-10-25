@@ -22,6 +22,18 @@ extension ListingFeedItem {
 
 }
 
+extension DonationFeedItem {
+	
+	var product: ProductViewModel? {
+		return Client.shared.products[donationID]
+	}
+	
+	var price: String? {
+		return product?.price
+	}
+	
+}
+
 
 extension FeedItem {
     var buttonOverlayColor: UIColor {

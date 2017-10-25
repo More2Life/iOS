@@ -1,0 +1,98 @@
+[23:47:26]: [33mGet started using a Gemfile for fastlane https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile[0m
+[23:47:29]: [32m-------------------------------------------------[0m
+[23:47:29]: [32m--- Step: Verifying required fastlane version ---[0m
+[23:47:29]: [32m-------------------------------------------------[0m
+[23:47:29]: Your fastlane version 2.54.3 matches the minimum requirement of 2.49.0  ✅
+[23:47:29]: [32m------------------------------[0m
+[23:47:29]: [32m--- Step: default_platform ---[0m
+[23:47:29]: [32m------------------------------[0m
+[23:47:29]: Welcome to fastlane! Here's what your app is setup to do:
++--------+--------------------------+-------------------------------------------------------------+
+|                                     Available lanes to run                                      |
++--------+--------------------------+-------------------------------------------------------------+
+| Number | Lane Name                | Description                                                 |
++--------+--------------------------+-------------------------------------------------------------+
+| 1      | ios test                 | Runs all the tests                                          |
+| 2      | ios beta                 | Submit a new Beta Build to Apple TestFlight This will also  |
+|        |                          | make sure the profile is up to date                         |
+| 3      | ios release              | Deploy a new version to the App Store                       |
+| 4      | ios updateInfoPlists     | Updates all the plists in the app to have the same version  |
+|        |                          | and build                                                   |
+| 5      | ios generateProvisioning | Generates certificates and provisioning profiles            |
+| 6      | ios downloadProvisioning | Downloads certificates and provisioning profiles            |
+| 0      | cancel                   | No selection, exit fastlane!                                |
++--------+--------------------------+-------------------------------------------------------------+
+[23:47:29]: [33mWhich number would you like run?[0m
+
+Looking for related GitHub issues on fastlane/fastlane...
+
+➡️  [33m[iOS] Alternative Solution to Could not retrieve response as fastlane runs in non-interactive mode [0m
+    https://github.com/fastlane/fastlane/issues/10335 [[31mopen[0m] 6 💬
+    4 weeks ago
+
+➡️  [33mCould not retrieve response as fastlane runs in non-interactive mode[0m
+    https://github.com/fastlane/fastlane/issues/9977 [[32mclosed[0m] 6 💬
+    a week ago
+
+➡️  [33mfastlane init not prompting for Apple Id[0m
+    https://github.com/fastlane/fastlane/issues/9048 [[32mclosed[0m] 10 💬
+    4 weeks ago
+
+and 22 more at: https://github.com/fastlane/fastlane/search?q=Could%20not%20retrieve%20response%20as%20fastlane%20runs%20in%20non-interactive%20mode&type=Issues&utf8=✓
+
+🔗  You can ⌘ + double-click on links to open them directly in your browser.
+
+[32m#######################################################################[0m
+[32m# fastlane 2.62.1 is available. You are on 2.54.3.[0m
+[32m# You should use the latest version.[0m
+[32m# Please update using `sudo gem install fastlane`.[0m
+[32m#######################################################################[0m
+
+[32m2.62.1 Improvements[0m
+- Support manual signingStyle (#10508) via Aleksey Anisov
+
+- Add missing html tag (#10657) via David Cordero
+- Deprecates add_id_info_limits_tracking in favor of add_id_info_uses_idfa (#10653) via Jorge
+- Add automatic committing of mkdocs.yml for docs generation (#10578) via Felix Krause
+- Handle Faraday::ParsingError as part of Client#with_retry logic (#10646) via Renzo
+- Handle parse error while waiting for build processing (#10621) via Renzo
+- Remove 'zip' example from update_info_plist (#10494) via Sahil Bajaj
+- Make plugin details optional (#10628) via Felix Krause
+- Fix sw_vers to stop leaking output (#10630) via Joseph Petersen
+
+- Forward match keychain password into cert (#10619) via Josh Holtz
+
+[32m2.62.0 Better error reporting and other fixes.[0m
+[spaceship] Fixed and improved upload_trailer! method (#10546) via Javier Agüera Cazorla
+[deliver] Properly report errors during execution (#10586) via Joshua Liebowitz
+[fastlane core] Refactoring metrics to be more understandable (#10488) via David Ohayon
+[docs] Updating message for itc_provider configuration option (#10593) via Joshua Liebowitz
+[docs] Fix links on match action page (#10591) via Jan Piotrowski
+[update_project_team] Set default path value (#10583) via Joseph Petersen
+[snapshot] Fix waiting during network activity for iPhone X (#10541) via Florian Fittschen
+[hockey] Clarify build file error message (#10568) via Jan Piotrowski
+[pod_push] Add swift_version option (#10570) via Marcus Wu
+[deliver] Fix documentation URL in default Deliverfile (#10575) via Iulian Onofrei
+[upload_symbols_to_crashlytics] Add verbose output for upload_dsym (#10537) via Joshua Liebowitz
+[gym] Add option to skip profile detection (#10463) via Nicolas Braun
+[gym] Pass xcargs to xcbuild-safe.sh (#10571) via Joshua Liebowitz
+[fastlane_core] Only query Xcode version on a Mac when running iTMS (#10545) via znerol
+[docs] Update `:update_docs` commit and Slack message (#10544) via Jan Piotrowski
+
+[32m2.61.0 Lots of improvements[0m
+* [backup_xcarchive] Add custom xcarchive zip filename option (#10540) via thii
+* Skip running precheck on `fastlane init` (#10517) via Felix Krause
+* [match] Only encrypt and commit files if they changed (#10516) via Felix Krause
+* Show verbose information for `fastlane snapshot reset_simulators` (#10518) via Felix Krause
+* Tell user about env variable for `fastlane snapshot reset_simulators` (#10519) via Felix Krause
+* Allow groups and distribute external to be mutually exclusive (#10220) via David Ohayon
+* Add `try_repo_update_on_error` option to `cocoapods` action (#10504) via Siarhei Fiedartsou
+* Update fastlane plugins only on update_plugins command (#10441) via Kohki Miki
+* Sets the installed profile name from sigh in an environment variable and lane context (#10515) via Josh Holtz
+* Add warning about sensitive or private information (#10505) via Iulian Onofrei
+* [spaceship] Add pagination support to Client#request (#10451) via Renzo
+* Move all docs over to https://docs.fastlane.tools via Felix Krause
+
+[32mTo see all new releases, open https://github.com/fastlane/fastlane/releases[0m
+
+[32mPlease update using `sudo gem install fastlane`[0m
