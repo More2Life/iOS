@@ -19,6 +19,7 @@ public enum FeedItemType: String {
     case story = "story"
     case event = "event"
     case listing = "listing"
+	case donation = "donation"
     case unknown
     
     public var localizedDescription: String {
@@ -29,6 +30,8 @@ public enum FeedItemType: String {
             return NSLocalizedString("Event", comment: "Event type string")
         case .listing:
             return NSLocalizedString("Shop", comment: "Listing type string")
+		case .donation:
+			return NSLocalizedString("Donate", comment: "Donation type string")
         case .unknown:
             return ""
         }
@@ -42,6 +45,8 @@ public enum FeedItemType: String {
             return NSLocalizedString("Register", comment: "Event type string")
         case .listing:
             return NSLocalizedString("Buy", comment: "Listing type string")
+		case .donation:
+			return NSLocalizedString("Donate", comment: "Donation type string")
         case .unknown:
             return ""
         }
@@ -55,6 +60,8 @@ public enum FeedItemType: String {
             return NSLocalizedString("Register", comment: "Event type string")
         case .listing:
             return NSLocalizedString("Checkout", comment: "Listing type string")
+		case .donation:
+			return NSLocalizedString("Donate", comment: "Donation type string")
         case .unknown:
             return ""
         }
@@ -143,6 +150,8 @@ public class FeedItem: NSManagedObject {
                 feedItem = EventFeedItem(context: context)
             case .listing:
                 feedItem = ListingFeedItem(context: context)
+			case .donation:
+				feedItem = DonationFeedItem(context: context)
             default: break
             }
         }
@@ -162,6 +171,8 @@ public class FeedItem: NSManagedObject {
             EventFeedItem.hydrate(feedItem, with: json)
         case .listing:
             ListingFeedItem.hydrate(feedItem, with: json, in: context)
+		case .donation:
+			DonationFeedItem.hydrate(feedItem, with: json, in: context)
         default: break
         }
         

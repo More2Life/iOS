@@ -45,7 +45,17 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     var mode: Mode? {
         didSet {
-            guard let mode = mode, case .action(let feedItem) = mode, let listingFeedItem = feedItem as? ListingFeedItem, let product = listingFeedItem.product else { return }
+            guard let mode = mode, case .action(let feedItem) = mode else { return }
+			
+			let product: ProductViewModel?
+			switch feedItem {
+			case let feedItem as ListingFeedItem:
+				product = feedItem.product
+			case let feedItem as DonationFeedItem:
+				product = feedItem.product
+			default:
+				return
+			}
             
             self.product = product
         }
@@ -98,7 +108,9 @@ class BuyModalViewController: UIViewController, ApplePaying {
             
             if let feedItem = feedItem as? ListingFeedItem {
                 actionButton?.setTitle(feedItem.price, for: .normal)
-            } else {
+			} else if let feedItem = feedItem as? DonationFeedItem {
+				actionButton?.setTitle(feedItem.price, for: .normal)
+			} else {
                 actionButton?.setTitle(feedItem.type.localizedConfirmationTitle, for: .normal)
             }
         }
@@ -191,6 +203,8 @@ extension FeedItem {
         switch self {
         case let item as ListingFeedItem:
             return item.price
+		case let item as DonationFeedItem:
+			return item.price
         default:
             return NSLocalizedString("Thank you for donating!", comment: "Thank you for donating message")
         }
