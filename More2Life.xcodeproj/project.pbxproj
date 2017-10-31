@@ -916,12 +916,13 @@
 					0441944F1F2D092500AFB904 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					044194571F2D092500AFB904 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
@@ -938,6 +939,7 @@
 					04638E7D1F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
@@ -948,30 +950,33 @@
 					04638E931F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					04638E9E1F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					04638ECE1F2CFD0F00E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					04638ED61F2CFD0F00E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					0485B6261F5BAA21002E599F = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9WF89A89NX;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1303,7 +1308,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1328,7 +1334,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1343,7 +1350,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.SharedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Debug;
@@ -1357,7 +1365,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.SharedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Release;
@@ -1528,17 +1537,14 @@
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/mobile-buy-sdk-ios-3.0.6/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e0b0e727-88e8-4112-97fa-8add56c3531e";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1550,17 +1556,14 @@
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/mobile-buy-sdk-ios-3.0.6/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8254bbdd-f7b1-4cf5-85b0-88ad32849136";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1574,7 +1577,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Debug;
@@ -1589,7 +1593,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Release;
@@ -1603,7 +1608,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = More2Life;
 			};
 			name = Debug;
@@ -1617,7 +1623,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = More2Life;
 			};
 			name = Release;
@@ -1643,7 +1650,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1668,7 +1676,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1683,7 +1692,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.ServicesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Debug;
@@ -1697,7 +1707,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.ServicesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/More2Life.app/More2Life";
 			};
 			name = Release;
@@ -1720,7 +1731,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1743,7 +1755,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.domo.Storefront;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

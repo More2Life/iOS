@@ -51,7 +51,7 @@ public final class ProductViewModel: ViewModel {
         self.cursor   = model.cursor
         
         let variants = model.node.variants.edges.viewModels.sorted {
-            $0.0.price < $0.1.price
+            $0.price < $1.price
         }
         
         let lowestPrice = variants.first?.price

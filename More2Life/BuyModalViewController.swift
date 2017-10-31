@@ -149,7 +149,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     func addApplePayButton(with type: PKPaymentButtonType) {
         guard PKPaymentAuthorizationViewController.canMakePayments() else { return }
-        let applePayButton = PKPaymentButton(type: type, style: .black)
+        let applePayButton = PKPaymentButton(paymentButtonType: type, paymentButtonStyle: .black)
         applePayButton.addTarget(self, action: #selector(applePayTapped), for: .touchUpInside)
         applePayButton.heightAnchor.constraint(equalToConstant: 49).isActive = true
         actionStackView?.insertArrangedSubview(applePayButton, at: 0)
