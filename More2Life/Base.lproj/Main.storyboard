@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -165,6 +165,7 @@
                         <outlet property="productImageView" destination="VPN-mS-Agp" id="IPo-L3-qZw"/>
                         <outlet property="productNameLabel" destination="V9G-jn-Gk3" id="cOD-sl-9yh"/>
                         <outlet property="selectionLabel" destination="WRj-Ty-IUs" id="DWK-fy-6ms"/>
+                        <outlet property="topBorderView" destination="7Gw-hI-g5s" id="sek-Sx-Gf4"/>
                         <outlet property="variantPicker" destination="ESj-D8-NaR" id="Ezh-gI-S8X"/>
                     </connections>
                 </viewController>

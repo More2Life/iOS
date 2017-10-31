@@ -84,7 +84,7 @@ class DetailViewController: UIViewController, FeedDetailing {
             guard let eventURLString = feedItem.eventURL, let url = URL(string: eventURLString) else { break }
             
             present(SFSafariViewController(url: url), animated: true, completion: nil)
-		case let feedItem as ListingFeedItem:
+        default:
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
 			
@@ -92,11 +92,14 @@ class DetailViewController: UIViewController, FeedDetailing {
 			
 			buyModalViewController.modalPresentationStyle = .custom
 			buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
-            buyModalViewController.mode = .action(feedItem: feedItem)
+            
+            if feedItem is ListingFeedItem || feedItem is DonationFeedItem {
+                buyModalViewController.mode = .action(feedItem: feedItem)
+            } else {
+                buyModalViewController.mode = .donate
+            }
 			
 			present(buyModalViewController, animated: true, completion: nil)
-        default:
-            break
         }
     }
     
