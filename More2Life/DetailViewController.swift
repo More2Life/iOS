@@ -37,7 +37,7 @@ class DetailViewController: UIViewController, FeedDetailing {
         title = feedItem?.title
         if let data = (feedItem?.itemDescription ?? "").data(using: .utf8) {
             do {
-                let attributedString = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+                let attributedString = try NSAttributedString(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
                 
                 descriptionLabel?.text = attributedString.string
             } catch {
@@ -72,7 +72,9 @@ class DetailViewController: UIViewController, FeedDetailing {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        scrollView?.contentInset = UIEdgeInsets(top: scrollView?.contentInset.top ?? 0, left: 0, bottom: (actionStackView?.frame.height ?? 0) + (16 * 2) + (tabBarController?.tabBar.frame.height ?? 0), right: 0)
+        let top = scrollView?.contentInset.top ?? 0
+        let bottom = (actionStackView?.frame.height ?? 0) + 32 + (tabBarController?.tabBar.frame.height ?? 0)
+        scrollView?.contentInset = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
     }
     
     @IBAction func actionTapped(_ sender: UIButton) {

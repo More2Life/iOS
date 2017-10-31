@@ -78,7 +78,7 @@ class FeedViewController: UIViewController {
         }
     }
     
-    func refresh(sender: UIRefreshControl?) {
+    @objc func refresh(sender: UIRefreshControl?) {
         let group = DispatchGroup()
         
         group.enter()
@@ -222,8 +222,8 @@ class FeedItemTableViewCell: UITableViewCell {
 	@IBOutlet weak var priceButton: PriceButton?
     @IBOutlet weak var playButton: UIButton?
     
-    var playVideo: () -> () = { _ in }
-    var buy: () -> () = { _ in }
+    var playVideo: () -> () = {  }
+    var buy: () -> () = {  }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -250,7 +250,7 @@ class FeedItemTableViewCell: UITableViewCell {
         priceButton?.isHidden = true
     
         playButton?.isHidden = true
-        playVideo = { _ in }
+        playVideo = {  }
         
         request = nil
     }

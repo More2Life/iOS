@@ -40,7 +40,7 @@ class HalfModalPresentationController : UIPresentationController {
         return view
     }
 	
-	func dismissOnTap(sender: UITapGestureRecognizer) {
+	@objc func dismissOnTap(sender: UITapGestureRecognizer) {
 		presentingViewController.dismiss(animated: true, completion: nil)
 	}
  
