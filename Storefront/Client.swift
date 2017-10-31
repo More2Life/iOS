@@ -29,8 +29,13 @@ import Buy
 import Pay
 
 extension Notification.Name {
+    
+    /// Notification sent out when the products have been imported from Shopify and are available on the shared Client.
     public static let productsImported = Notification.Name(rawValue: "productsImported")
 }
+
+/// Identifier for the product being used as a default donation product. This product should include a list of cash values.
+private let defaultDonationHandle = "donation"
 
 public final class Client {
     
@@ -38,6 +43,11 @@ public final class Client {
     static let apiKey     = "a6b7e9ddb238920dde5e5223a9466054"
     
     public var products: [String : ProductViewModel] = [:]
+    
+    /// Product being used as a default donation product. This product should include a list of cash values.
+    public var defaultDonationProduct: ProductViewModel? {
+        return products[defaultDonationHandle]
+    }
     
     public static let shared = Client()
     

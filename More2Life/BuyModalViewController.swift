@@ -26,6 +26,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
     @IBOutlet weak var productNameLabel: UILabel!
 	@IBOutlet weak var selectionLabel: UILabel!
 	@IBOutlet weak var variantPicker: UIPickerView!
+    @IBOutlet weak var topBorderView: UIView!
     
     var paySession: PaySession?
     var checkoutID: String?
@@ -45,18 +46,23 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     var mode: Mode? {
         didSet {
-            guard let mode = mode, case .action(let feedItem) = mode else { return }
+            guard let mode = mode else { return }
 			
-			let product: ProductViewModel?
-			switch feedItem {
-			case let feedItem as ListingFeedItem:
-				product = feedItem.product
-			case let feedItem as DonationFeedItem:
-				product = feedItem.product
-			default:
-				return
-			}
-            
+            let product: ProductViewModel?
+            switch mode {
+            case .action(let feedItem):
+                switch feedItem {
+                case let feedItem as ListingFeedItem:
+                    product = feedItem.product
+                case let feedItem as DonationFeedItem:
+                    product = feedItem.product
+                default:
+                    return
+                }
+            case .donate:
+                product = Client.shared.defaultDonationProduct
+            }
+			
             self.product = product
         }
     }
@@ -87,9 +93,12 @@ class BuyModalViewController: UIViewController, ApplePaying {
         switch mode {
         case .donate:
             addApplePayButton(with: .donate)
-            actionButton?.setTitle(localizedDonateString, for: .normal)
+            productImageView?.isHidden = true
+            topBorderView.isHidden = true
+            
+            productNameLabel.text = NSLocalizedString("Donation:", comment: "Donation label title")
         case .action(let feedItem):
-			productNameLabel.text = "\(feedItem.title ?? "Selection"):"
+			productNameLabel.text = "\(feedItem.title ?? NSLocalizedString("Selection", comment: "Default product title")):"
             
             // Preview image
             if let imageURL = feedItem.previewImageURL {
