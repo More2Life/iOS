@@ -82,10 +82,6 @@ class HalfModalPresentationController : UIPresentationController {
     }
     
     override func dismissalTransitionDidEnd(_ completed: Bool) {
-		guard let containerView = containerView else {
-			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
-		}
-		
         if completed {
             dimmingView.removeFromSuperview()
             _dimmingView = nil
