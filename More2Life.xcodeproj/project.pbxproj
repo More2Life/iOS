@@ -97,6 +97,10 @@
 		E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */; };
 		E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */; };
 		E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA881F54C66900112A4C /* BuyModalViewController.swift */; };
+		E2A2D7AA1FB665CB0056AC2C /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E2A2D7B21FB666170056AC2C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A2D7B11FB666170056AC2C /* NotificationService.swift */; };
+		E2A2D7B61FB666170056AC2C /* NotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E2A2D7BB1FB667940056AC2C /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */; };
 		E2E709E61F9FFE6800AF6A2C /* DonationFeedItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E709E41F9FFE6700AF6A2C /* DonationFeedItem+CoreDataClass.swift */; };
 		E2E709E71F9FFE6800AF6A2C /* DonationFeedItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E709E51F9FFE6800AF6A2C /* DonationFeedItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -179,6 +183,13 @@
 			remoteGlobalIDString = 0485B6261F5BAA21002E599F;
 			remoteInfo = Storefront;
 		};
+		E2A2D7B41FB666170056AC2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04638E761F2CFC5700E746A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2A2D7AE1FB666170056AC2C;
+			remoteInfo = NotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +211,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0460075D1F5E474B00A8724F /* StickerPackExtension.appex in Embed App Extensions */,
+				E2A2D7B61FB666170056AC2C /* NotificationServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +226,7 @@
 				044194661F2D092500AFB904 /* Shared.framework in Embed Frameworks */,
 				042BCC3E1F2D6DD6007403FF /* Alamofire.framework in Embed Frameworks */,
 				046C92C21F5B4454000BD9BF /* Buy.framework in Embed Frameworks */,
+				E2A2D7AA1FB665CB0056AC2C /* OneSignal.framework in Embed Frameworks */,
 				0485B62F1F5BAA21002E599F /* Storefront.framework in Embed Frameworks */,
 				04C75C261F45E780005DFC3F /* Pay.framework in Embed Frameworks */,
 			);
@@ -315,6 +328,10 @@
 		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		E27BDA881F54C66900112A4C /* BuyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
 		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = ../More2Life/MainButton.swift; sourceTree = "<group>"; };
+		E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
+		E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2A2D7B11FB666170056AC2C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E2A2D7B31FB666170056AC2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E709E41F9FFE6700AF6A2C /* DonationFeedItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DonationFeedItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2E709E51F9FFE6800AF6A2C /* DonationFeedItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DonationFeedItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -341,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04638EE41F2CFD0F00E746A8 /* Services.framework in Frameworks */,
+				E2A2D7BB1FB667940056AC2C /* OneSignal.framework in Frameworks */,
 				046C92C11F5B4454000BD9BF /* Buy.framework in Frameworks */,
 				044194651F2D092500AFB904 /* Shared.framework in Frameworks */,
 				0485B62E1F5BAA21002E599F /* Storefront.framework in Frameworks */,
@@ -387,6 +405,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2A2D7AC1FB666170056AC2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -422,6 +447,7 @@
 				04638ED01F2CFD0F00E746A8 /* Services */,
 				04638EDD1F2CFD0F00E746A8 /* ServicesTests */,
 				0485B6281F5BAA21002E599F /* Storefront */,
+				E2A2D7B01FB666170056AC2C /* NotificationServiceExtension */,
 				04638E7F1F2CFC5800E746A8 /* Products */,
 				04638EEF1F2CFD3000E746A8 /* Frameworks */,
 			);
@@ -440,6 +466,7 @@
 				0485B6271F5BAA21002E599F /* Storefront.framework */,
 				046007471F5E352C00A8724F /* Stickers.app */,
 				0460074A1F5E352D00A8724F /* StickerPackExtension.appex */,
+				E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -504,6 +531,7 @@
 		04638EEF1F2CFD3000E746A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */,
 				046C92C01F5B4454000BD9BF /* Buy.framework */,
 				04C75C241F45E780005DFC3F /* Pay.framework */,
 				04D074E01F2D0346007E20D6 /* Alamofire.framework */,
@@ -690,6 +718,15 @@
 			name = Transition;
 			sourceTree = "<group>";
 		};
+		E2A2D7B01FB666170056AC2C /* NotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E2A2D7B11FB666170056AC2C /* NotificationService.swift */,
+				E2A2D7B31FB666170056AC2C /* Info.plist */,
+			);
+			path = NotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -806,6 +843,7 @@
 				044194641F2D092500AFB904 /* PBXTargetDependency */,
 				0485B62D1F5BAA21002E599F /* PBXTargetDependency */,
 				0460075F1F5E474B00A8724F /* PBXTargetDependency */,
+				E2A2D7B51FB666170056AC2C /* PBXTargetDependency */,
 			);
 			name = More2Life;
 			productName = More2Life;
@@ -903,13 +941,30 @@
 			productReference = 0485B6271F5BAA21002E599F /* Storefront.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E2A2D7AE1FB666170056AC2C /* NotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2A2D7B71FB666170056AC2C /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
+			buildPhases = (
+				E2A2D7AB1FB666170056AC2C /* Sources */,
+				E2A2D7AC1FB666170056AC2C /* Frameworks */,
+				E2A2D7AD1FB666170056AC2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationServiceExtension;
+			productName = NotificationServiceExtension;
+			productReference = E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		04638E761F2CFC5700E746A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = More2Life;
 				TargetAttributes = {
@@ -943,6 +998,12 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -979,6 +1040,10 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
+					E2A2D7AE1FB666170056AC2C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Manual;
+					};
 				};
 			};
 			buildConfigurationList = 04638E791F2CFC5700E746A8 /* Build configuration list for PBXProject "More2Life" */;
@@ -1004,6 +1069,7 @@
 				0485B6261F5BAA21002E599F /* Storefront */,
 				046007461F5E352C00A8724F /* Stickers */,
 				046007491F5E352D00A8724F /* StickerPackExtension */,
+				E2A2D7AE1FB666170056AC2C /* NotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1078,6 +1144,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0485B6251F5BAA21002E599F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2A2D7AD1FB666170056AC2C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1208,6 +1281,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2A2D7AB1FB666170056AC2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2A2D7B21FB666170056AC2C /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1265,6 +1346,11 @@
 			isa = PBXTargetDependency;
 			target = 0485B6261F5BAA21002E599F /* Storefront */;
 			targetProxy = 0485B62C1F5BAA21002E599F /* PBXContainerItemProxy */;
+		};
+		E2A2D7B51FB666170056AC2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2A2D7AE1FB666170056AC2C /* NotificationServiceExtension */;
+			targetProxy = E2A2D7B41FB666170056AC2C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1535,8 +1621,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
@@ -1554,8 +1646,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9WF89A89NX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
@@ -1762,6 +1860,56 @@
 			};
 			name = Release;
 		};
+		E2A2D7B81FB666170056AC2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.NotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E2A2D7B91FB666170056AC2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.NotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1860,6 +2008,15 @@
 			buildConfigurations = (
 				0485B6311F5BAA21002E599F /* Debug */,
 				0485B6321F5BAA21002E599F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2A2D7B71FB666170056AC2C /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2A2D7B81FB666170056AC2C /* Debug */,
+				E2A2D7B91FB666170056AC2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
