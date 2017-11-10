@@ -20,7 +20,7 @@
                         <viewControllerLayoutGuide type="top" id="fo7-5h-XI5"/>
                         <viewControllerLayoutGuide type="bottom" id="7kv-8k-hU5"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="IGj-Kt-DVg">
+                    <view key="view" contentMode="scaleToFill" id="IGj-Kt-DVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
