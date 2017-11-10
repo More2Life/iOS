@@ -48,8 +48,9 @@ class HalfModalPresentationController : UIPresentationController {
 		guard let containerView = containerView else {
 			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
 		}
-        return CGRect(x: 0, y: containerView.bounds.height * 0.333 , width: containerView.bounds.width, height: containerView.bounds.height * 0.666)
-    }
+		return CGRect(x: 0, y: containerView.bounds.height * 0.333 , width: containerView.bounds.width, height: containerView.bounds.height * 0.666)
+		
+	}
 	
 	override func containerViewWillLayoutSubviews() {
 		presentedView?.frame = frameOfPresentedViewInContainerView
@@ -71,25 +72,34 @@ class HalfModalPresentationController : UIPresentationController {
     
     override func dismissalTransitionWillBegin() {
 		let dimmedView = dimmingView
+		guard let containerView = containerView else {
+			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
+		}
+		let height = containerView.frame.height
 		
         if let coordinator = presentingViewController.transitionCoordinator {
             
             coordinator.animate(alongsideTransition: { (context) -> Void in
 				dimmedView.alpha = 0
-                self.presentingViewController.view.transform = CGAffineTransform.identity
+				self.presentingViewController.view.transform = CGAffineTransform.identity
+//				containerView.frame.origin.y = height
             }, completion: nil)
             
         }
     }
     
     override func dismissalTransitionDidEnd(_ completed: Bool) {
+		guard let containerView = containerView else {
+			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
+		}
+		
         if completed {
             dimmingView.removeFromSuperview()
             _dimmingView = nil
 		} else {
 			dimmingView.alpha = 1
 			self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-
+			containerView.frame.origin.y = 0
 		}
 	}
 }
