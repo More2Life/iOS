@@ -11,7 +11,7 @@ import CoreData
 import Services
 import Alamofire
 
-public let localizedDonateString = NSLocalizedString("Donate", comment: "Video type string")
+public let localizedDonateString = NSLocalizedString("Donate", comment: "Story type string")
 
 let feedItemQueue = DispatchQueue(label: "com.coachkalani.more2life.feeditem")
 
@@ -25,7 +25,7 @@ public enum FeedItemType: String {
     public var localizedDescription: String {
         switch self {
         case .story:
-            return NSLocalizedString("Video", comment: "Video type string")
+            return NSLocalizedString("Story", comment: "Story type string")
         case .event:
             return NSLocalizedString("Event", comment: "Event type string")
         case .listing:

@@ -48,8 +48,9 @@ class HalfModalPresentationController : UIPresentationController {
 		guard let containerView = containerView else {
 			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
 		}
-        return CGRect(x: 0, y: containerView.bounds.height * 0.333 , width: containerView.bounds.width, height: containerView.bounds.height * 0.666)
-    }
+		return CGRect(x: 0, y: containerView.bounds.height * 0.333 , width: containerView.bounds.width, height: containerView.bounds.height * 0.666)
+		
+	}
 	
 	override func containerViewWillLayoutSubviews() {
 		presentedView?.frame = frameOfPresentedViewInContainerView
@@ -73,12 +74,10 @@ class HalfModalPresentationController : UIPresentationController {
 		let dimmedView = dimmingView
 		
         if let coordinator = presentingViewController.transitionCoordinator {
-            
             coordinator.animate(alongsideTransition: { (context) -> Void in
 				dimmedView.alpha = 0
-                self.presentingViewController.view.transform = CGAffineTransform.identity
+				self.presentingViewController.view.transform = CGAffineTransform.identity
             }, completion: nil)
-            
         }
     }
     
@@ -89,7 +88,6 @@ class HalfModalPresentationController : UIPresentationController {
 		} else {
 			dimmingView.alpha = 1
 			self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-
 		}
 	}
 }

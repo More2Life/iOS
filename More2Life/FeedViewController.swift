@@ -274,7 +274,7 @@ extension FeedItemType {
         case .event:
             return Color.lightRed.uiColor
 		case .donation:
-			return Color.lightGreen.uiColor
+			return Color.lightOrange.uiColor
         case .unknown:
             return .gray
         }
@@ -289,7 +289,7 @@ extension FeedItemType {
 		case .event:
 			return Color.darkRed.uiColor
 		case .donation:
-			return Color.darkGreen.uiColor
+			return Color.darkOrange.uiColor
 		case .unknown:
 			return .gray
 		}
