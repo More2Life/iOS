@@ -72,19 +72,12 @@ class HalfModalPresentationController : UIPresentationController {
     
     override func dismissalTransitionWillBegin() {
 		let dimmedView = dimmingView
-		guard let containerView = containerView else {
-			fatalError("If we don't have a container view here there is no point to the entire app. It's coming from the storyboard.")
-		}
-		let height = containerView.frame.height
 		
         if let coordinator = presentingViewController.transitionCoordinator {
-            
             coordinator.animate(alongsideTransition: { (context) -> Void in
 				dimmedView.alpha = 0
 				self.presentingViewController.view.transform = CGAffineTransform.identity
-//				containerView.frame.origin.y = height
             }, completion: nil)
-            
         }
     }
     
@@ -99,7 +92,6 @@ class HalfModalPresentationController : UIPresentationController {
 		} else {
 			dimmingView.alpha = 1
 			self.presentingViewController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-			containerView.frame.origin.y = 0
 		}
 	}
 }
