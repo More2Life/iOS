@@ -10,6 +10,9 @@ import UIKit
 import Storefront
 import Buy
 import OneSignal
+import Fabric
+import Crashlytics
+
 
 var paymentSettings: Storefront.PaymentSettings?
 
@@ -24,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             More2Life.paymentSettings = paymentSettings
         }
 		
+		// OneSignal
 		let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
 		
 		OneSignal.initWithLaunchOptions(launchOptions,
@@ -42,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Sync hashed email if you have a login system or collect it.
 		//   Will be used to reach the user at the most optimal time of day.
 		// OneSignal.syncHashedEmail(userEmail)
+		
+		
+		// Fabric
+		Fabric.with([Crashlytics.self])
         
         return true
     }

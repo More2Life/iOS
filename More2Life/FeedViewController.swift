@@ -16,6 +16,8 @@ import AVKit
 import Pay
 import Storefront
 import SafariServices
+import Fabric
+import Crashlytics
 
 protocol FeedDetailing {
     var feedItem: FeedItem? { get set }
@@ -126,7 +128,27 @@ class FeedViewController: UIViewController {
         buyModalViewController.modalPresentationStyle = .custom
         buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
         buyModalViewController.mode = .action(feedItem: feedItem)
-        
+		
+		switch feedItem {
+		case let feedItem as ListingFeedItem:
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Buy Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item List",
+									"forItem": feedItem.productID])
+			
+		case let feedItem as DonationFeedItem:
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Donate Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item List",
+									"forItem": feedItem.donationID])
+		default:
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Buy Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item List"])
+		}
         present(buyModalViewController, animated: true, completion: nil)
 	}
     
