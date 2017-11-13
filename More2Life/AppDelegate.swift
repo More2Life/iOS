@@ -9,6 +9,7 @@
 import UIKit
 import Storefront
 import Buy
+import OneSignal
 
 var paymentSettings: Storefront.PaymentSettings?
 
@@ -22,6 +23,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Client.shared.fetchPaymentSettings { paymentSettings in
             More2Life.paymentSettings = paymentSettings
         }
+		
+		let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+		
+		OneSignal.initWithLaunchOptions(launchOptions,
+										appId: "73d5b1e1-3d21-4075-90a0-7c7c514a9bb6",
+										handleNotificationAction: nil,
+										settings: onesignalInitSettings)
+		
+		OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+		
+		// Recommend moving the below line to prompt for push after informing the user about
+		//   how your app will use them.
+		OneSignal.promptForPushNotifications(userResponse: { accepted in
+			print("User accepted notifications: \(accepted)")
+		})
+		
+		// Sync hashed email if you have a login system or collect it.
+		//   Will be used to reach the user at the most optimal time of day.
+		// OneSignal.syncHashedEmail(userEmail)
         
         return true
     }
