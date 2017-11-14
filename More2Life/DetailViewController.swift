@@ -13,6 +13,8 @@ import PassKit
 import AVKit
 import AVFoundation
 import Pay
+import Fabric
+import Crashlytics
 
 class DetailViewController: UIViewController, FeedDetailing {
     @IBOutlet weak var scrollView: UIScrollView?
@@ -33,6 +35,12 @@ class DetailViewController: UIViewController, FeedDetailing {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		// Answers KPI
+		Answers.logContentView(withName: feedItem?.title,
+									   contentType: "Feed Item Detail",
+									   contentId: feedItem?.identifier,
+									   customAttributes: [:])
 
         title = feedItem?.title
         if let data = (feedItem?.itemDescription ?? "").data(using: .utf8) {
@@ -79,28 +87,48 @@ class DetailViewController: UIViewController, FeedDetailing {
     
     @IBAction func actionTapped(_ sender: UIButton) {
         guard let feedItem = feedItem else { return }
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
+		self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
+		
+		buyModalViewController.modalPresentationStyle = .custom
+		buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
+		
         switch feedItem {
         case let feedItem as EventFeedItem:
             guard let eventURLString = feedItem.eventURL, let url = URL(string: eventURLString) else { break }
+			
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Register Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item Detail",
+									"forItem": eventURLString])
             
             present(SFSafariViewController(url: url), animated: true, completion: nil)
+			
+		case let feedItem as ListingFeedItem:
+			buyModalViewController.mode = .action(feedItem: feedItem)
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Buy Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item Detail",
+									"forItem": feedItem.productID])
+		case let feedItem as DonationFeedItem:
+			buyModalViewController.mode = .action(feedItem: feedItem)
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Donate Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item Detail",
+									"forItem": feedItem.donationID])
         default:
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let buyModalViewController: BuyModalViewController = storyboard.instantiateViewController()
-			
-			self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: buyModalViewController)
-			
-			buyModalViewController.modalPresentationStyle = .custom
-			buyModalViewController.transitioningDelegate = self.halfModalTransitioningDelegate
-            
-            if feedItem is ListingFeedItem || feedItem is DonationFeedItem {
-                buyModalViewController.mode = .action(feedItem: feedItem)
-            } else {
-                buyModalViewController.mode = .donate
-            }
-			
-			present(buyModalViewController, animated: true, completion: nil)
-        }
+			buyModalViewController.mode = .donate
+			// Answers KPI
+			Answers.logCustomEvent(withName: "Action Button Tapped",
+								   customAttributes: [
+									"fromView": "Feed Item Detail"])
+		}
+		present(buyModalViewController, animated: true, completion: nil)
     }
     
     @IBAction func playTapped(_ sender: UIButton) {

@@ -97,6 +97,8 @@
 		E27BDA811F54C53B00112A4C /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA801F54C53B00112A4C /* HalfModalPresentationController.swift */; };
 		E27BDA851F54C54500112A4C /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */; };
 		E27BDA891F54C66900112A4C /* BuyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BDA881F54C66900112A4C /* BuyModalViewController.swift */; };
+		E29FD3091FBA4B9100FFCA08 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29FD3071FBA4B9100FFCA08 /* Crashlytics.framework */; };
+		E29FD30A1FBA4B9100FFCA08 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29FD3081FBA4B9100FFCA08 /* Fabric.framework */; };
 		E2A2D7AA1FB665CB0056AC2C /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2A2D7B21FB666170056AC2C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A2D7B11FB666170056AC2C /* NotificationService.swift */; };
 		E2A2D7B61FB666170056AC2C /* NotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -328,6 +330,8 @@
 		E27BDA821F54C54500112A4C /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		E27BDA881F54C66900112A4C /* BuyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
 		E27BDA8A1F56098A00112A4C /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainButton.swift; path = ../More2Life/MainButton.swift; sourceTree = "<group>"; };
+		E29FD3071FBA4B9100FFCA08 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		E29FD3081FBA4B9100FFCA08 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 		E2A2D7AF1FB666170056AC2C /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A2D7B11FB666170056AC2C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -360,9 +364,11 @@
 				04638EE41F2CFD0F00E746A8 /* Services.framework in Frameworks */,
 				E2A2D7BB1FB667940056AC2C /* OneSignal.framework in Frameworks */,
 				046C92C11F5B4454000BD9BF /* Buy.framework in Frameworks */,
+				E29FD30A1FBA4B9100FFCA08 /* Fabric.framework in Frameworks */,
 				044194651F2D092500AFB904 /* Shared.framework in Frameworks */,
 				0485B62E1F5BAA21002E599F /* Storefront.framework in Frameworks */,
 				04C75C251F45E780005DFC3F /* Pay.framework in Frameworks */,
+				E29FD3091FBA4B9100FFCA08 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +537,8 @@
 		04638EEF1F2CFD3000E746A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E29FD3071FBA4B9100FFCA08 /* Crashlytics.framework */,
+				E29FD3081FBA4B9100FFCA08 /* Fabric.framework */,
 				E2A2D7A71FB665BF0056AC2C /* OneSignal.framework */,
 				046C92C01F5B4454000BD9BF /* Buy.framework */,
 				04C75C241F45E780005DFC3F /* Pay.framework */,
@@ -835,6 +843,7 @@
 				04638E7C1F2CFC5800E746A8 /* Resources */,
 				04638EE91F2CFD0F00E746A8 /* Embed Frameworks */,
 				046007601F5E474B00A8724F /* Embed App Extensions */,
+				E29FD30B1FBA4C8E00FFCA08 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1159,6 +1168,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E29FD30B1FBA4C8E00FFCA08 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" cb57b985e43dc68d27c1ce48daf7c530f5a986d5 09d003440cfebcdb862d2811afd1a500656753918718b39b265a14fa06283d64";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0441944B1F2D092500AFB904 /* Sources */ = {
