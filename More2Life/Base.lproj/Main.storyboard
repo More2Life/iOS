@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -92,7 +92,7 @@
                                                 </constraints>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESj-D8-NaR">
-                                                <rect key="frame" x="11.5" y="185" width="320" height="355"/>
+                                                <rect key="frame" x="11.5" y="185" width="320" height="320"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="gmL-BO-pvi"/>
                                                 </constraints>
@@ -101,8 +101,19 @@
                                                     <outlet property="delegate" destination="Yg2-3X-Peh" id="Q5n-gi-Ck8"/>
                                                 </connections>
                                             </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-O0-pDA">
+                                                <rect key="frame" x="17" y="510" width="309" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="L4f-dE-mx6"/>
+                                                </constraints>
+                                                <state key="normal" title="Donating is tax-exempt. More2Life is a 501(c)(3)."/>
+                                                <connections>
+                                                    <action selector="donationExplainationTapped:" destination="Yg2-3X-Peh" eventType="touchUpInside" id="Lpw-ag-BZk"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="C8P-O0-pDA" firstAttribute="width" secondItem="PfD-zu-bZw" secondAttribute="width" multiplier="0.9" id="3Nj-MI-1f2"/>
                                             <constraint firstItem="7Kx-gM-JjF" firstAttribute="leading" secondItem="PfD-zu-bZw" secondAttribute="leading" id="KSd-5T-Vsg"/>
                                             <constraint firstAttribute="trailing" secondItem="7Kx-gM-JjF" secondAttribute="trailing" id="Tl8-vu-4dN"/>
                                         </constraints>
@@ -167,6 +178,7 @@
                         <outlet property="actionButton" destination="Qxa-Yq-fc9" id="Smn-WH-FAJ"/>
                         <outlet property="actionStackView" destination="ebh-zb-UPk" id="Nw9-LM-iA2"/>
                         <outlet property="contentView" destination="xIy-Mx-pa7" id="M1E-LD-3dz"/>
+                        <outlet property="donationExplainationButton" destination="C8P-O0-pDA" id="mSv-t8-y9A"/>
                         <outlet property="productImageView" destination="VPN-mS-Agp" id="IPo-L3-qZw"/>
                         <outlet property="productNameLabel" destination="V9G-jn-Gk3" id="cOD-sl-9yh"/>
                         <outlet property="selectionLabel" destination="WRj-Ty-IUs" id="DWK-fy-6ms"/>
@@ -630,7 +642,7 @@
         <image name="play_button" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MDi-ur-b0y"/>
+        <segue reference="5rb-dY-6gm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.086274509799999996" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
 </document>
