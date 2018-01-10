@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hr2-fB-MfO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -31,24 +31,24 @@
                                         <rect key="frame" x="-0.5" y="13" width="343" height="540"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Kx-gM-JjF">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="101"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VPN-mS-Agp">
-                                                        <rect key="frame" x="111.5" y="0.0" width="120" height="120"/>
+                                                        <rect key="frame" x="146.5" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="Zat-r7-R7a"/>
                                                             <constraint firstAttribute="height" secondItem="VPN-mS-Agp" secondAttribute="width" multiplier="1:1" id="fpM-oi-rFo"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gw-hI-g5s" userLabel="Border">
-                                                        <rect key="frame" x="0.0" y="131" width="343" height="1"/>
+                                                        <rect key="frame" x="0.0" y="58" width="343" height="1"/>
                                                         <color key="backgroundColor" red="0.84705882349999995" green="0.86274509799999999" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Lyc-ZH-HzY"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8I-rZ-kN1" userLabel="Selection View">
-                                                        <rect key="frame" x="0.0" y="143" width="343" height="25"/>
+                                                        <rect key="frame" x="0.0" y="67" width="343" height="25"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9G-jn-Gk3">
                                                                 <rect key="frame" x="10" y="0.0" width="49.5" height="24"/>
@@ -74,7 +74,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHG-Hi-lBQ" userLabel="Border">
-                                                        <rect key="frame" x="0.0" y="179" width="343" height="1"/>
+                                                        <rect key="frame" x="0.0" y="100" width="343" height="1"/>
                                                         <color key="backgroundColor" red="0.84705882352941175" green="0.86274509803921573" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="uQb-La-sXo"/>
@@ -92,7 +92,7 @@
                                                 </constraints>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESj-D8-NaR">
-                                                <rect key="frame" x="11.5" y="185" width="320" height="355"/>
+                                                <rect key="frame" x="11.5" y="106" width="320" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="gmL-BO-pvi"/>
                                                 </constraints>
@@ -101,8 +101,38 @@
                                                     <outlet property="delegate" destination="Yg2-3X-Peh" id="Q5n-gi-Ck8"/>
                                                 </connections>
                                             </pickerView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" translatesAutoresizingMaskIntoConstraints="NO" id="b9T-Ey-3i8">
+                                                <rect key="frame" x="0.0" y="211" width="343" height="329"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUQ-Ih-dxu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="8" height="329"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="8" id="x0m-9Y-R2Z"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="1000" text="The Kalani Sitake More To Life Foundation is a 501(c)(3) not-for-profit organization." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coC-Tb-Aba">
+                                                        <rect key="frame" x="8" y="0.0" width="327" height="329"/>
+                                                        <gestureRecognizers/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="RGd-66-6rV" appends="YES" id="8ew-7a-5Dy"/>
+                                                        </connections>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZb-1N-Zm3">
+                                                        <rect key="frame" x="335" y="0.0" width="8" height="329"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="8" id="XNo-8q-AAH"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="b9T-Ey-3i8" firstAttribute="width" secondItem="PfD-zu-bZw" secondAttribute="width" id="15Y-lS-mCD"/>
                                             <constraint firstItem="7Kx-gM-JjF" firstAttribute="leading" secondItem="PfD-zu-bZw" secondAttribute="leading" id="KSd-5T-Vsg"/>
                                             <constraint firstAttribute="trailing" secondItem="7Kx-gM-JjF" secondAttribute="trailing" id="Tl8-vu-4dN"/>
                                         </constraints>
@@ -167,6 +197,7 @@
                         <outlet property="actionButton" destination="Qxa-Yq-fc9" id="Smn-WH-FAJ"/>
                         <outlet property="actionStackView" destination="ebh-zb-UPk" id="Nw9-LM-iA2"/>
                         <outlet property="contentView" destination="xIy-Mx-pa7" id="M1E-LD-3dz"/>
+                        <outlet property="donationExplainationView" destination="b9T-Ey-3i8" id="izt-ES-EcU"/>
                         <outlet property="productImageView" destination="VPN-mS-Agp" id="IPo-L3-qZw"/>
                         <outlet property="productNameLabel" destination="V9G-jn-Gk3" id="cOD-sl-9yh"/>
                         <outlet property="selectionLabel" destination="WRj-Ty-IUs" id="DWK-fy-6ms"/>
@@ -175,6 +206,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6G-D5-rlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RGd-66-6rV">
+                    <connections>
+                        <action selector="donationExplainationTapped" destination="Yg2-3X-Peh" id="U9G-zR-hTe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2248.8000000000002" y="-1016.9415292353824"/>
         </scene>
@@ -630,7 +666,7 @@
         <image name="play_button" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MDi-ur-b0y"/>
+        <segue reference="5rb-dY-6gm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.086274509799999996" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
 </document>

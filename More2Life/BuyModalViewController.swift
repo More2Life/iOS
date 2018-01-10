@@ -27,6 +27,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
 	@IBOutlet weak var selectionLabel: UILabel!
 	@IBOutlet weak var variantPicker: UIPickerView!
     @IBOutlet weak var topBorderView: UIView!
+    @IBOutlet weak var donationExplainationView: UIView!
     
     var paySession: PaySession?
     var checkoutID: String?
@@ -97,6 +98,8 @@ class BuyModalViewController: UIViewController, ApplePaying {
             topBorderView.isHidden = true
             
             productNameLabel.text = NSLocalizedString("Donation:", comment: "Donation label title")
+            
+            donationExplainationView.isHidden = false
         case .action(let feedItem):
 			productNameLabel.text = "\(feedItem.title ?? NSLocalizedString("Selection", comment: "Default product title")):"
             
@@ -122,6 +125,8 @@ class BuyModalViewController: UIViewController, ApplePaying {
 			} else {
                 actionButton?.setTitle(feedItem.type.localizedConfirmationTitle, for: .normal)
             }
+            
+            donationExplainationView.isHidden = true
         }
     }
     
@@ -177,6 +182,13 @@ class BuyModalViewController: UIViewController, ApplePaying {
                 self?.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    @IBAction func donationExplainationTapped() {
+        let alert = UIAlertController(title: NSLocalizedString("Tax-Deductible Donation", comment: "Tax Exempt Donation Alert Title"), message: NSLocalizedString("The Kalani Sitake More To Life Foundation is a 501(c)(3) not-for-profit organization registered with the Internal Revenue Service. Therefore, all donations are tax-deductible to the fullest extent permitted by applicable law. All donors will receive an acknowledgement that includes a confirmation of their donation for tax records.", comment: "More2Life is a 501(c)(3). That means your donation is tax exempt and can be claimed as a deduction on your taxes."), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default))
+        
+        present(alert, animated: true)
     }
 }
 
