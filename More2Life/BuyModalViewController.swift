@@ -27,7 +27,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
 	@IBOutlet weak var selectionLabel: UILabel!
 	@IBOutlet weak var variantPicker: UIPickerView!
     @IBOutlet weak var topBorderView: UIView!
-    @IBOutlet weak var donationExplainationButton: UIButton!
+    @IBOutlet weak var donationExplainationView: UIView!
     
     var paySession: PaySession?
     var checkoutID: String?
@@ -83,7 +83,6 @@ class BuyModalViewController: UIViewController, ApplePaying {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        donationExplainationButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         guard let mode = mode else {
             assert(self.mode != nil, "Must set a mode before presenting \(String(describing: self))")
@@ -100,7 +99,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
             
             productNameLabel.text = NSLocalizedString("Donation:", comment: "Donation label title")
             
-            donationExplainationButton.isHidden = false
+            donationExplainationView.isHidden = false
         case .action(let feedItem):
 			productNameLabel.text = "\(feedItem.title ?? NSLocalizedString("Selection", comment: "Default product title")):"
             
@@ -127,7 +126,7 @@ class BuyModalViewController: UIViewController, ApplePaying {
                 actionButton?.setTitle(feedItem.type.localizedConfirmationTitle, for: .normal)
             }
             
-            donationExplainationButton.isHidden = true
+            donationExplainationView.isHidden = true
         }
     }
     
@@ -185,8 +184,8 @@ class BuyModalViewController: UIViewController, ApplePaying {
         }
     }
     
-    @IBAction func donationExplainationTapped(_ sender: Any) {
-        let alert = UIAlertController(title: NSLocalizedString("Tax Exempt Donation", comment: "Tax Exempt Donation Alert Title"), message: NSLocalizedString("More2Life is a 501(c)(3). That means your donation is tax exempt and can be claimed as a deduction on your taxes.", comment: "More2Life is a 501(c)(3). That means your donation is tax exempt and can be claimed as a deduction on your taxes."), preferredStyle: .alert)
+    @IBAction func donationExplainationTapped() {
+        let alert = UIAlertController(title: NSLocalizedString("Tax-Deductible Donation", comment: "Tax Exempt Donation Alert Title"), message: NSLocalizedString("The Kalani Sitake More To Life Foundation is a 501(c)(3) not-for-profit organization registered with the Internal Revenue Service. Therefore, all donations are tax-deductible to the fullest extent permitted by applicable law. All donors will receive an acknowledgement that includes a confirmation of their donation for tax records.", comment: "More2Life is a 501(c)(3). That means your donation is tax exempt and can be claimed as a deduction on your taxes."), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default))
         
         present(alert, animated: true)
