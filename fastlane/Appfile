@@ -1,4 +1,4 @@
-app_identifier "com.coachkalani.More2Life" # The bundle identifier of your app
+app_identifier "com.coachkalanifoundation.More2Life" # The bundle identifier of your app
 apple_id "porterhoskins@gmail.com" # Your Apple email address
 
 team_id "5SDFSQ3AKE" # Developer Portal Team ID

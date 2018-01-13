@@ -979,30 +979,30 @@
 				TargetAttributes = {
 					0441944F1F2D092500AFB904 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					044194571F2D092500AFB904 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					046007461F5E352C00A8724F = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						ProvisioningStyle = Automatic;
 					};
 					046007491F5E352D00A8724F = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						ProvisioningStyle = Manual;
 					};
 					04638E7D1F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1019,39 +1019,40 @@
 					};
 					04638E931F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					04638E9E1F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					04638ECE1F2CFD0F00E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 					04638ED61F2CFD0F00E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04638E7D1F2CFC5800E746A8;
 					};
 					0485B6261F5BAA21002E599F = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					E2A2D7AE1FB666170056AC2C = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = 9WF89A89NX;
+						DevelopmentTeam = 5SDFSQ3AKE;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1409,7 +1410,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1436,7 +1436,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1458,7 +1457,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = SharedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.SharedTests;
@@ -1473,7 +1471,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = SharedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.SharedTests;
@@ -1489,7 +1486,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = Stickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.Stickers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1500,7 +1496,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = Stickers/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.Stickers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1511,13 +1506,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				INFOPLIST_FILE = StickerPackExtension/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.StickerPackExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "58af783a-a8d8-4e35-b905-a5f943d0867c";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life.StickerPackExtension";
+				PROVISIONING_PROFILE = "6269c267-d913-49db-aa14-5186cc3b0aee";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life.StickerPackExtension";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1526,13 +1523,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				INFOPLIST_FILE = StickerPackExtension/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.StickerPackExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life.StickerPackExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a529b407-1756-48e4-8efd-0dd5aa30fb2e";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life.StickerPackExtension";
+				PROVISIONING_PROFILE = "6269c267-d913-49db-aa14-5186cc3b0aee";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life.StickerPackExtension";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1568,6 +1566,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1625,6 +1624,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1652,8 +1652,9 @@
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1661,10 +1662,10 @@
 				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e0b0e727-88e8-4112-97fa-8add56c3531e";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life";
+				PROVISIONING_PROFILE = "3bbc6dea-e536-4ad6-8f16-928b793f27fd";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1677,8 +1678,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1686,10 +1688,10 @@
 				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8254bbdd-f7b1-4cf5-85b0-88ad32849136";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life";
+				PROVISIONING_PROFILE = "3bbc6dea-e536-4ad6-8f16-928b793f27fd";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1700,7 +1702,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = More2LifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeTests;
@@ -1716,7 +1717,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = More2LifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeTests;
@@ -1731,7 +1731,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = More2LifeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeUITests;
@@ -1746,7 +1745,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = More2LifeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2LifeUITests;
@@ -1765,7 +1763,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1793,7 +1790,6 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1816,7 +1812,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = ServicesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.ServicesTests;
@@ -1831,7 +1826,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				INFOPLIST_FILE = ServicesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.ServicesTests;
@@ -1850,7 +1844,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1875,7 +1868,6 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1898,9 +1890,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1909,10 +1902,10 @@
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.NotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c90fc40b-82d7-4f3b-8861-67621db9a244";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life.NotificationServiceExtension";
+				PROVISIONING_PROFILE = "55f1a780-5b17-41c5-8d30-5d620916c2de";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life.NotificationServiceExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1925,9 +1918,9 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 9WF89A89NX;
+				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1936,10 +1929,10 @@
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life.NotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "457a3a73-8455-4095-8284-2eda3d886be7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life.NotificationServiceExtension";
+				PROVISIONING_PROFILE = "55f1a780-5b17-41c5-8d30-5d620916c2de";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life.NotificationServiceExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
