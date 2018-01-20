@@ -1002,7 +1002,7 @@
 					};
 					04638E7D1F2CFC5800E746A8 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 5SDFSQ3AKE;
+						DevelopmentTeam = 9WF89A89NX;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1653,7 +1653,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
+				DEVELOPMENT_TEAM = 9WF89A89NX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1661,10 +1661,10 @@
 				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3bbc6dea-e536-4ad6-8f16-928b793f27fd";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life";
+				PROVISIONING_PROFILE = "e0b0e727-88e8-4112-97fa-8add56c3531e";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalani.More2Life";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1677,8 +1677,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = More2Life/More2Life.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5SDFSQ3AKE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 9WF89A89NX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1686,10 +1686,10 @@
 				);
 				INFOPLIST_FILE = More2Life/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalanifoundation.More2Life;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coachkalani.More2Life;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3bbc6dea-e536-4ad6-8f16-928b793f27fd";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.coachkalanifoundation.More2Life";
+				PROVISIONING_PROFILE = "8254bbdd-f7b1-4cf5-85b0-88ad32849136";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.coachkalani.More2Life";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
